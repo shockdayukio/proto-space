@@ -1,24 +1,59 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## User
+### association
+```
+has_many: :prototypes, :likes, :comments
+```
+### table
+- profile
+- works
+- image
+- created_at
+- updated_at
 
-Things you may want to cover:
+## Prototype
+### association
+```
+has_many: :captureimages, :likes, :comments
+belongs_to: :user
+```
+### table
+- name
+- catch_copy
+- concept
+- user_id
+- created_at
+- updated_at
 
-* Ruby version
+## CapturedImage
+### association
+```
+belongs_to: :prototype
+```
+### table
+- image
+- prototype_id
 
-* System dependencies
+## Like
+### association
+```
+belongs_to: :prototypes, :users
+```
+### table
+- prototype_id
+- user_id
+- created_id
+- updated_id
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Comment
+### association
+```
+belongs_to: prototypes, :users
+```
+### table
+- text
+- prototype_id
+- user_id
+- created_id
+- updated_id
