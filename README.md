@@ -20,7 +20,7 @@ has_many: :prototypes, :likes, :comments
 ### Prototype
 #### association
 ```
-has_many: :captureimages, :likes, :comments
+has_many: :captured_images, :likes, :comments
 belongs_to: :user
 ```
 #### table
@@ -38,6 +38,7 @@ belongs_to: :prototype
 ```
 #### table
 - image
+- status
 - prototype_id
 
 ### Like
@@ -48,8 +49,8 @@ belongs_to: :prototypes, :users
 #### table
 - prototype_id
 - user_id
-- created_id
-- updated_id
+- created_at
+- updated_at
 
 ### Comment
 #### association
