@@ -44,7 +44,7 @@ belongs_to: :prototype
 ### Like
 #### association
 ```
-belongs_to: :prototypes, :users
+belongs_to: :prototype, :user
 ```
 #### table
 - prototype_id
@@ -55,7 +55,7 @@ belongs_to: :prototypes, :users
 ### Comment
 #### association
 ```
-belongs_to: prototypes, :users
+belongs_to: prototype, :user
 ```
 #### table
 - text
