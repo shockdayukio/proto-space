@@ -1,24 +1,65 @@
-# README
+# Protospace
+## Environment
+- Ruby version: 2.4.0
+- Rails version: 5.0.0
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Tables and their associations
+### User
+#### association
+```
+has_many: :prototypes, :likes, :comments
+```
+#### table
 
-Things you may want to cover:
+- profile
+- works
+- avatar
+- created_at
+- updated_at
 
-* Ruby version
+### Prototype
+#### association
+```
+has_many: :captured_images, :likes, :comments
+belongs_to: :user
+```
+#### table
+- name
+- catch_copy
+- concept
+- user_id
+- created_at
+- updated_at
 
-* System dependencies
+### CapturedImage
+#### association
+```
+belongs_to: :prototype
+```
+#### table
+- image
+- status
+- prototype_id
 
-* Configuration
+### Like
+#### association
+```
+belongs_to: :prototype, :user
+```
+#### table
+- prototype_id
+- user_id
+- created_at
+- updated_at
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Comment
+#### association
+```
+belongs_to: prototype, :user
+```
+#### table
+- text
+- prototype_id
+- user_id
+- created_id
+- updated_id
