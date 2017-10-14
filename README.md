@@ -11,6 +11,7 @@ has_many: :prototypes, :likes, :comments
 ```
 #### table
 
+- name
 - profile
 - works
 - avatar
