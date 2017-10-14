@@ -3,6 +3,13 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
     create_table :users do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
+
+      ## Added
+      t.string :name
+      t.string :profile
+      t.string :works
+      t.string :avatar
+
       t.string :encrypted_password, null: false, default: ""
 
       ## Recoverable
