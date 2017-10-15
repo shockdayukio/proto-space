@@ -5,10 +5,10 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string :email,              null: false, default: ""
 
       ## Added
-      t.string :name, null: false
-      t.text :profile
-      t.string :works
-      t.string :avatar
+      t.string :name, null: false, default: ""
+      t.text :profile, null: false
+      t.string :works, null: false, default: ""
+      t.string :avatar, default: "noimage.png"
       t.text :occupation, null: false
 
       t.string :encrypted_password, null: false, default: ""
