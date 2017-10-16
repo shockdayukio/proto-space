@@ -23,7 +23,7 @@
             %li
               %a{href: "#"} Profile Edit
             %li
-              %a{href: "#"} Logout
+              =link_to "Logout", destroy_user_session_path, method: :delete
         %li
           .btn.btn-primary.navbar-btn
             %a{href: "/proto/new"}
