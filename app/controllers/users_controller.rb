@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
-  before_action :set_user, only: [:show, :edit]
+  before_action :set_user, only: [:show, :edit, :update]
+  before_action :authenticate_user!, only: [:edit, :update]
 
   def show
   end
@@ -9,13 +10,14 @@ class UsersController < ApplicationController
   end
 
   def update
-    User.update(user_params)
-    redirect_to(user_path)
+    @user.update(user_params)
+    sign_in(@user, bypass: true)
+    redirect_to(prototypes_path)
   end
 
   private
   def set_user
-    @user = current_user
+    @user = User.find(params[:id])
   end
 
   def user_params
