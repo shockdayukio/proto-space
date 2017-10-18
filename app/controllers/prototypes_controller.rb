@@ -1,6 +1,7 @@
 class PrototypesController < ApplicationController
 
-before_action :set_user, only: [:index, :show]
+  before_action :authenticate_user!
+  # before_action :set_user, only: [:index, :show]
 
   def index
   end
@@ -11,8 +12,4 @@ before_action :set_user, only: [:index, :show]
   def new
   end
 
-  private
-  def set_user
-    @user = current_user
-  end
 end
