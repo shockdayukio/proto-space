@@ -10,9 +10,13 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update(user_params)
-    sign_in(@user, bypass: true)
-    redirect_to(prototypes_path)
+    user = @user.update(user_params)
+    if user == true
+      sign_in(@user, bypass: true)
+      redirect_to(prototypes_path)
+    else
+      redirect_to(edit_user_path)
+    end
   end
 
   private
