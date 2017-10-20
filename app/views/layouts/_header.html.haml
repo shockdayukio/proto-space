@@ -10,7 +10,7 @@
       -if user_signed_in?
         %ul.nav.navbar-nav.navbar-right
           %li.dropdown
-            =link_to current_user.name, "aria-expanded": "false", "data-toggle": "dropdown", href: "#", class: "dropdown-toggle" do
+            =link_to current_user.name, "aria-expanded": "false", "data-toggle": "dropdown", class: "dropdown-toggle" do
               = current_user.name
               %span.caret
               %ul.dropdown-menu{role: "menu"}
