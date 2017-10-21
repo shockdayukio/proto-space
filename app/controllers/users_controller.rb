@@ -10,8 +10,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    user = @user.update(user_params)
-    if user == true
+    if @user.update(user_params)
       sign_in(@user, bypass: true)
       redirect_to(prototypes_path)
     else
