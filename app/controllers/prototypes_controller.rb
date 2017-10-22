@@ -1,5 +1,7 @@
 class PrototypesController < ApplicationController
 
+  before_action :authenticate_user!, only: :new
+
   def index
   end
 
@@ -8,4 +10,5 @@ class PrototypesController < ApplicationController
 
   def new
   end
+
 end
