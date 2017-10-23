@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   def update
     if @user.update(user_params)
       sign_in(@user, bypass: true)
-      redirect_to prototypes_path, notice: "Successed to update your information"
+      redirect_to prototypes_path, notice: "Succeeded to update your information"
     else
       redirect_to edit_user_path, alert: "Failed to update your information"
     end
