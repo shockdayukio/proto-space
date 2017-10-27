@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update]
 
   def show
+    @prototypes = @user.prototypes
+    @prototype_count = @prototypes.length
   end
 
   def edit
