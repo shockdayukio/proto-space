@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171027071716) do
+ActiveRecord::Schema.define(version: 20171027161137) do
 
   create_table "captured_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "image",        default: "", null: false
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20171027071716) do
     t.integer  "user_id"
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
+    t.string   "image"
     t.index ["user_id"], name: "index_prototypes_on_user_id", using: :btree
   end
 
