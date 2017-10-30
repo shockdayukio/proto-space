@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @prototypes = @user.prototypes
-    @prototype_count = @prototypes.length
+    @prototypes_count = @prototypes.length
   end
 
   def edit
