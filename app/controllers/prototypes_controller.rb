@@ -14,10 +14,12 @@ class PrototypesController < ApplicationController
   end
 
   def create
-    if current_user.prototypes.create(prototype_params)
+    @prototype = current_user.prototypes.new(prototype_params)
+
+    if @prototype.save
       redirect_to prototypes_path, notice: "Succeeded to publish your prototype"
     else
-      redirect_to prototypes_path, alert: "Failed to publish your prototype"
+      redirect_to new_prototype_path, alert: "Failed to publish your prototype"
     end
   end
 
