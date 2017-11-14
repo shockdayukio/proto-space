@@ -27,19 +27,20 @@
       .col-sm-4.col-md-3.proto-content
         .thumbnail
           %a{href: ""}
-            = image_tag proto.captured_images.image
-            .caption
-              =content_tag :h3, proto.name
-              .proto-meta
-                .proto-user
-                  = @user.name
-                .proto-posted
-                  = proto.created_at
-              %ul.proto-tag-list.list-inline
-                %li
-                  %a{href: "#", class: "btn btn-default"} iPad
-                %li
-                  %a{href: "#", class: "btn btn-default"} wireframe
+            - proto.captured_images.main.each do |main|
+              = image_tag main.image
+          .caption
+            =content_tag :h3, proto.name
+            .proto-meta
+              .proto-user
+                = @user.name
+              .proto-posted
+                = proto.created_at
+            %ul.proto-tag-list.list-inline
+              %li
+                %a{href: "#", class: "btn btn-default"} iPad
+              %li
+                %a{href: "#", class: "btn btn-default"} wireframe
 .text-center
   %ul.pagination
     %li.disabled
