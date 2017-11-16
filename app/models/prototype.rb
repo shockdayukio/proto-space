@@ -3,7 +3,5 @@ class Prototype < ApplicationRecord
   has_many :captured_images, inverse_of: :prototype
   accepts_nested_attributes_for :captured_images
 
-  validates :name, presence: true
-  validates :catch_copy, presence: true
-  validates :concept, presence: true
+  validates :name, :catch_copy, :concept ,presence: true
 end
