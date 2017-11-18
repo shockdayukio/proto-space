@@ -26,7 +26,7 @@
     - @prototypes.each do |proto|
       .col-sm-4.col-md-3.proto-content
         .thumbnail
-          %a{href: ""}
+          %a{href: prototype_path(proto.id)}
             - proto.captured_images.main.each do |main|
               = image_tag main.image
           .caption
