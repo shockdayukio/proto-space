@@ -28,7 +28,6 @@ class PrototypesController < ApplicationController
   end
 
   def destroy
-    binding.pry
     Prototype.destroy(delete_params[:id])
     redirect_to prototypes_path
   end
