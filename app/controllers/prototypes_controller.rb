@@ -27,8 +27,18 @@ class PrototypesController < ApplicationController
     end
   end
 
+  def destroy
+    binding.pry
+    Prototype.destroy(delete_params[:id])
+    redirect_to prototypes_path
+  end
+
   private
   def prototype_params
     params.require(:prototype).permit(:name, :catch_copy, :concept, :user_id, captured_images_attributes: [:image, :status])
+  end
+
+  def delete_params
+    params.permit(:id)
   end
 end
