@@ -25,13 +25,13 @@
   .row
     - @prototypes.each do |proto|
       .col-sm-4.col-md-3.proto-content
-        - if @user.id == current_user.id
+        - if user_signed_in?
           .dropdown.drop_menu_location
             = button_tag class: "btn btn-default dropdown-toggle", "data-toggle": "dropdown", id: "dropdownMenu", "aria-expanded": true do
               ACTION
             = content_tag :ul, "aria-labelledby": "dropdownMenu1", class: "dropdown-menu" do
               = content_tag :li do
-                = link_to "Edit", prototype_path(proto.id), method: :patch
+                = link_to "Edit", edit_prototype_path(proto.id)
               = content_tag :li do
                 = link_to "Delete", prototype_path(proto.id), method: :delete
         .thumbnail
