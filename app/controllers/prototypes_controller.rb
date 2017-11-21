@@ -36,13 +36,19 @@ class PrototypesController < ApplicationController
 
   def update
     @prototype = Prototype.find(params[:id])
-    @prototype.update(prototype_params)
-    redirect_to prototypes_path
+    if @prototype.update(prototype_params)
+      redirect_to prototypes_path, notice: "Succeeded to update your prototype"
+    else
+      redirect_to edit_prototype_path, alert: "Failed to update your prototype"
+    end
   end
 
   def destroy
-    Prototype.destroy(delete_params[:id])
-    redirect_to prototypes_path
+    if Prototype.destroy(delete_params[:id])
+      redirect_to prototypes_path, notice: "Succeeded to delete your prototype"
+    else
+      redirect_to prototypes_path, alert: "Failed to delete your prototype"
+    end
   end
 
   private
