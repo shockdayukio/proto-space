@@ -9,7 +9,7 @@ class PrototypesController < ApplicationController
   def show
     @prototype = Prototype.find(params[:id])
     @user = @prototype.user
-    @main_images = @prototype.captured_images.main
+    @main_image = @prototype.captured_images.main
     @sub_images = @prototype.captured_images.sub
   end
 
@@ -28,6 +28,18 @@ class PrototypesController < ApplicationController
     end
   end
 
+  def edit
+    @prototype = Prototype.find(params[:id])
+    @main_images = @prototype.captured_images.main
+    @sub_images = @prototype.captured_images.sub
+  end
+
+  def update
+    @prototype = Prototype.find(params[:id])
+    @prototype.update(prototype_params)
+    redirect_to prototypes_path
+  end
+
   def destroy
     Prototype.destroy(delete_params[:id])
     redirect_to prototypes_path
@@ -35,7 +47,7 @@ class PrototypesController < ApplicationController
 
   private
   def prototype_params
-    params.require(:prototype).permit(:name, :catch_copy, :concept, :user_id, captured_images_attributes: [:image, :status])
+    params.require(:prototype).permit(:name, :catch_copy, :concept, :user_id, captured_images_attributes: [:id, :image, :status])
   end
 
   def delete_params
