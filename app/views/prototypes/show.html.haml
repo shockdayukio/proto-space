@@ -1,17 +1,18 @@
+- user = @prototype.user
 .container.proto-page
   %header.row.user-nav
     .col-md-6
       .media
         .media-left
-          = link_to user_path(@user.id) do
-            = image_tag @user.avatar, alt: "64x64", "data-holder-rendered": "true", "data-src": "holder.js/64x64", style: "width: 64px; height: 64px;", class: "media-object"
+          = link_to user_path(user) do
+            = image_tag user.avatar, alt: "64x64", "data-holder-rendered": "true", "data-src": "holder.js/64x64", style: "width: 64px; height: 64px;", class: "media-object"
         .media-body
           %h4#top-aligned-media.media-heading
             Top aligned media
           .proto-user
-            =link_to "by" + @user.name, user_path(@user.id)
+            =link_to "by #{user.name}", user_path(user)
             %span.degree
-              = @user.occupation
+              = user.occupation
 
     .col-md-6.text-right
       %button.btn.btn-default
@@ -20,13 +21,10 @@
         %span.num 20
   .row
     .col-md-9
-      - @main_images.each do |main|
-        = image_tag(main.image ,class: 'img-responsive')
+      = image_tag(@prototype.main_image.image ,class: 'img-responsive')
     .col-md-3
       %ul.proto-sub-list.list-group
-      - @sub_images.each do |sub|
-        %li.list-group-item
-          = image_tag(sub.image ,class: 'img-responsive')
+        = render partial: "sub_image", collection: @prototype.sub_images
 
   .row.proto-description
     .col-md-3
