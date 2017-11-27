@@ -5,12 +5,12 @@
         .col-md-12
           = f.text_field :name ,placeholder: "Title", class: "proto-new-title"
       .row
-        = f.fields_for :captured_images, @main_images do |image_form|
+        = f.fields_for :captured_images, @prototype.main_image do |image_form|
           .col-md-12
             .cover-image-upload
               = image_form.file_field :image
               = image_form.hidden_field :status, value: "main"
-            = f.fields_for :captured_images, @sub_images do |image_form|
+            = f.fields_for :captured_images, @prototype.sub_images do |image_form|
               %ul.proto-sub-list.list-
                 %li.list-group-item.col-md-4
                   .image-upload
