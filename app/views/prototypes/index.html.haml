@@ -14,34 +14,7 @@
 
 .container.proto-list
   .row
-    - @prototypes.each do |proto|
-      - user = proto.user
-      .col-sm-4.col-md-3.proto-content
-        - if user_signed_in?
-          .dropdown.drop_menu_location
-            = button_tag class: "btn btn-default dropdown-toggle", "data-toggle": "dropdown", id: "dropdownMenu", "aria-expanded": true do
-              ACTION
-            = content_tag :ul, "aria-labelledby": "dropdownMenu1", class: "dropdown-menu" do
-              = content_tag :li do
-                = link_to "Edit", edit_prototype_path(proto.id)
-              = content_tag :li do
-                = link_to "Delete", prototype_path(proto.id), method: :delete
-        .thumbnail
-          = link_to prototype_path(proto.id) do
-            = image_tag(proto.captured_images.main[0].image)
-            .caption
-              = content_tag :h3, proto.name
-              .proto-meta
-                .proto-user
-                  = link_to user_path(proto.user.id) do
-                    = "by " + proto.user.name
-                .proto-posted
-                  = proto.created_at
-              %ul.proto-tag-list.list-inline
-                %li
-                  %a{href: "#", class: "btn btn-default"} iPad
-                %li
-                  %a{href: "#", class: "btn btn-default"} wireframe
+    = render partial: "prototype", collection: @prototypes
 .text-center
   %ul.pagination
     %li.disabled
