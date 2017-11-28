@@ -1,7 +1,7 @@
 class PrototypesController < ApplicationController
 
   before_action :authenticate_user!, only: [:new, :create]
-  before_action :set_prototype, only: [:show, :edit, :update]
+  before_action :set_prototype, only: [:show, :edit, :update, :destroy]
 
 
   def index
@@ -38,10 +38,14 @@ class PrototypesController < ApplicationController
   end
 
   def destroy
-    if Prototype.destroy(params[:id])
-      redirect_to prototypes_path, notice: "Succeeded to delete your prototype"
+    if current_user == @prototype.user
+      if @prototype.destroy
+        redirect_to prototypes_path, notice: "Succeeded to delete your prototype"
+      else
+        redirect_to prototypes_path, alert: "Failed to delete your prototype"
+      end
     else
-      redirect_to prototypes_path, alert: "Failed to delete your prototype"
+      redirect_to prototypes_path, alert: "Cannot delete other's prototype"
     end
   end
 
