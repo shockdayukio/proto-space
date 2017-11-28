@@ -1,7 +1,7 @@
 class PrototypesController < ApplicationController
 
   before_action :authenticate_user!, only: [:new, :create]
-  before_action :find_prototype, only: [:show, :edit, :update]
+  before_action :set_prototype, only: [:show, :edit, :update]
 
 
   def index
@@ -50,7 +50,7 @@ class PrototypesController < ApplicationController
     params.require(:prototype).permit(:name, :catch_copy, :concept, :user_id, captured_images_attributes: [:id, :image, :status])
   end
 
-  def find_prototype
+  def set_prototype
     @prototype = Prototype.find(params[:id])
   end
 end
