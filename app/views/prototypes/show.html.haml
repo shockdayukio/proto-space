@@ -21,7 +21,7 @@
         %span.num 20
   .row
     .col-md-9
-      = image_tag(@prototype.main_image.image ,class: 'img-responsive')
+      = image_tag(@prototype.main_image ,class: 'img-responsive')
     .col-md-3
       %ul.proto-sub-list.list-group
         = render partial: "sub_image", collection: @prototype.sub_images
