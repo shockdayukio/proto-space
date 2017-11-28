@@ -6,7 +6,7 @@ class Prototype < ApplicationRecord
   validates :name, :catch_copy, :concept ,presence: true
 
   def main_image
-    self.captured_images.main.first
+    self.captured_images.main.present? ? self.captured_images.main.first.image : 'no-image.png'
   end
 
   def sub_images
