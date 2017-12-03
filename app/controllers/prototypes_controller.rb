@@ -38,14 +38,14 @@ class PrototypesController < ApplicationController
   end
 
   def destroy
-    if current_user == @prototype.user
-      if @prototype.destroy
-        redirect_to prototypes_path, notice: "Succeeded to delete your prototype"
-      else
-        redirect_to prototypes_path, alert: "Failed to delete your prototype"
-      end
-    else
+    unless @prototype.created_by?(current_user)
       redirect_to prototypes_path, alert: "Cannot delete other's prototype"
+    end
+
+    if @prototype.destroy
+      redirect_to prototypes_path, notice: "Succeeded to delete your prototype"
+    else
+      redirect_to prototypes_path, alert: "Failed to delete your prototype"
     end
   end
 
