@@ -12,4 +12,8 @@ class Prototype < ApplicationRecord
   def sub_images
     self.captured_images.sub
   end
+
+  def created_by?(user)
+    self.user == user
+  end
 end
