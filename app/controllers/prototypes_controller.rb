@@ -5,7 +5,7 @@ class PrototypesController < ApplicationController
 
 
   def index
-    @prototypes = Prototype.all
+    @prototypes = Prototype.all.includes(:user)
   end
 
   def show
