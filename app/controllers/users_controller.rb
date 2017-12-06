@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def show
     prototypes = @user.prototypes
     @prototypes_count = prototypes.length
-    @prototypes = prototypes.page(params[:page]).per(8)
+    @prototypes = prototypes.page(params[:page]).per(Prototype::NUMBER_OF_DISPLAYED_PROTOTYPES)
   end
 
   def edit

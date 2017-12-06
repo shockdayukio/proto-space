@@ -5,7 +5,8 @@ class PrototypesController < ApplicationController
 
 
   def index
-    @prototypes = Prototype.all.page(params[:page]).per(8).includes(:user)
+    @prototypes = Prototype.includes(:user).page(params[:page]).per(Prototype::
+  NUMBER_OF_DISPLAYED_PROTOTYPES)
   end
 
   def show
