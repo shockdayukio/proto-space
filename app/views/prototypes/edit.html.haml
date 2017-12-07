@@ -1,0 +1,42 @@
+.container.proto-new
+  = form_for @prototype do |f|
+    .col-md-8.col-md-offset-2
+      %header.row.user-nav.row
+        .col-md-12
+          = f.text_field :name ,placeholder: "Title", class: "proto-new-title"
+      .row
+        = f.fields_for :captured_images, @prototype.captured_images.main.first do |image_form|
+          .col-md-12
+            .cover-image-upload
+              = image_form.file_field :image
+              = image_form.hidden_field :status, value: "main"
+            = f.fields_for :captured_images, @prototype.sub_images do |image_form|
+              %ul.proto-sub-list.list-
+                %li.list-group-item.col-md-4
+                  .image-upload
+                    = image_form.file_field :image
+                    = image_form.hidden_field :status, value: "sub"
+                %li.list-group-item.col-md-4
+                  .image-upload
+                    = image_form.file_field :image
+                    = image_form.hidden_field :status, value: "sub"
+                %li.list-group-item.col-md-4
+                  .image-upload-plus
+                    %span +
+      .row.proto-description
+        .col-md-12
+          = f.text_field :catch_copy, placeholder: "Catch Copy"
+        .col-md-12
+          = f.text_area :concept, placeholder: "Concept", cols: "30", rows: "4"
+        .col-md-12
+          %h4 Tag List
+          .row
+            .col-md-3
+              %input{type: "text", placeholder: "Web Design"}/
+            .col-md-3
+              %input{type: "text", placeholder: "UI"}/
+            .col-md-3
+              %input{type: "text", placeholder: "Application"}/
+        = f.hidden_field :user_id, value: current_user.id
+      .row.text-center.proto-btn
+        = f.submit "Publish", class: "button btn btn-lg btn-primary btn-block"
