@@ -16,9 +16,10 @@
 
     .col-md-6.text-right
       %button.btn.btn-default
-        = image_tag("icon_heart.svg")
-        Like
-        %span.num 20
+        = link_to likes_path(prototype_id: @prototype.id), method: "post" do
+          = image_tag("icon_heart.svg")
+          Like
+          %span.num 20
   .row
     .col-md-9
       = image_tag(@prototype.main_image ,class: 'img-responsive')
