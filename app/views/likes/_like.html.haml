@@ -1,0 +1,6 @@
+%button.btn.btn-default
+  = link_to like_path(prototype.id), method: "delete", remote: true do
+    = image_tag("icon_red_heart.svg")
+    Like
+    %span.num
+      = prototype.like_count
