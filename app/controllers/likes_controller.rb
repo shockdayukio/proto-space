@@ -8,7 +8,8 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    @prototype.likes.find_by(user_id: current_user.id).destroy
+    like = @prototype.likes.find_by(user_id: current_user.id)
+    like.destroy if like.present?
   end
 
   private
