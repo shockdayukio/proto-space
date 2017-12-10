@@ -5,17 +5,11 @@ class LikesController < ApplicationController
   def create
     current_user.likes.create(prototype_id: prototype_params[:id])
     set_prototype
-    respond_to do |format|
-      format.js
-    end
   end
 
   def destroy
     current_user.likes.find_by(prototype_id: prototype_params[:id]).destroy
     set_prototype
-    respond_to do |format|
-      format.js
-    end
   end
 
   private
