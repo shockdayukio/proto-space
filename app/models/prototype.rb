@@ -19,4 +19,9 @@ class Prototype < ApplicationRecord
   def created_by?(user)
     self.user == user
   end
+
+  def liked_by_user?(user)
+    return false unless user
+    self.likes.find_by(user_id: user_id).present?
+  end
 end
