@@ -51,8 +51,8 @@
       %span.num
         = "(#{@prototype.comments.length})"
       .col-md-8.comments-list
-        = render partial: "comments/comment", collection: @prototype.comments
-      = form_for @prototype.comments.new, remote: true do |f|
+        = render partial: "comments/comment", collection: @comments
+      = form_for @comments.new, remote: true do |f|
         %h4.col-md-8 Write a comment
         .row
           .form-group.col-md-10
