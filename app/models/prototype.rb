@@ -20,7 +20,7 @@ class Prototype < ApplicationRecord
     self.user == user
   end
 
-  def liked_by_user?(user)
+  def liked_by?(user)
     return false unless user.present?
     self.likes.find_by(user_id: user.id).present?
   end
