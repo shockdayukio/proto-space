@@ -3,6 +3,7 @@ class Prototype < ApplicationRecord
   has_many :captured_images, inverse_of: :prototype, dependent: :destroy
   accepts_nested_attributes_for :captured_images
   has_many :likes
+  has_many :comments
 
   validates :name, :catch_copy, :concept ,presence: true
 
