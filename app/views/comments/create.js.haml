@@ -1,0 +1,3 @@
+$(".comments-list").append("#{ j(render "comments/comment", comment: @comment)}")
+$("#comment-text").val("")
+$("span.num").text("(#{@prototype.comments.length})")
