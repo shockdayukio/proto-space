@@ -3,6 +3,7 @@ class Prototype < ApplicationRecord
   has_many :captured_images, inverse_of: :prototype, dependent: :destroy
   accepts_nested_attributes_for :captured_images
   has_many :likes
+  has_many :comments
 
   validates :name, :catch_copy, :concept ,presence: true
 
@@ -23,5 +24,9 @@ class Prototype < ApplicationRecord
   def liked_by?(user)
     return false unless user.present?
     self.likes.find_by(user_id: user.id).present?
+  end
+
+  def comment_num
+    self.comments.size
   end
 end

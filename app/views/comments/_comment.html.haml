@@ -1,0 +1,12 @@
+.col-md-8
+  .media
+    .media-left
+      = link_to user_path(comment.user.id) do
+        %img.media-object{alt: "64x64", "data-holder-rendered": "true", "data-src": "holder.js/64x64", src: comment.user.avatar , style: "width: 64px; height: 64px;"}/
+    .media-body
+      %h4#top-aligned-media.media-heading
+        = comment.user.name
+        %a.anchorjs-link{href: "#top-aligned-media"}
+          %span.anchorjs-icon
+      %p
+        = comment.text
