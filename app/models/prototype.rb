@@ -25,4 +25,8 @@ class Prototype < ApplicationRecord
     return false unless user.present?
     self.likes.find_by(user_id: user.id).present?
   end
+
+  def comment_num
+    self.comments.size
+  end
 end
