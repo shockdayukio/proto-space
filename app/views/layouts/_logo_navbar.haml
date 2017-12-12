@@ -5,10 +5,9 @@
 .filter-nav
   .container
     .row
-      %ul.nav.nav-pills.col-lg-11
-        %li.active{role: "presentation"}
+      = content_tag :ul, class: "nav nav-pills col-lg-11" do
+        = content_tag :li, class: "active", role: "presentation" do
           = link_to "Popular PROTO", popular_index_path
-        %li{role: "presentation"}
+        = content_tag :li, role: "presentation" do
           = link_to "Newest PROTO", newest_index_path
       %button{type: "button", class: "btn btn-default col-lg-1"} View Tags
-
