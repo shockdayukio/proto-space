@@ -53,11 +53,10 @@
       .col-md-8.comments-list
         = render partial: "comments/comment", collection: @comments
       - if user_signed_in?
-        = form_for @comments.new, remote: true do |f|
+        = form_for [@prototype, @comments.new] , remote: true do |f|
           %h4.col-md-8 Write a comment
           .row
             .form-group.col-md-10
               = f.text_area :text, placeholder: "Your comments", rows: "3", class: "form-control", id: "comment-text"
-              = f.hidden_field :prototype_id, value: @prototype.id
             .form-group.col-md-2
               %button.btn.btn-primary Comment
