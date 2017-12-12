@@ -19,7 +19,7 @@
             = link_to user_path(user) do
               = "by #{user.name}"
           .proto-posted
-            = prototype.created_at
+            = prototype.created_at.to_s(:db)
         %ul.proto-tag-list.list-inline
           %li
             %a{href: "#", class: "btn btn-default"} iPad
