@@ -49,7 +49,7 @@
     %h4.col-md-12
       Comments
       %span.num
-        = "(#{@prototype.comments.length})"
+        = "(#{@prototype.comment_num})"
       .col-md-8.comments-list
         = render partial: "comments/comment", collection: @comments
       - if user_signed_in?
