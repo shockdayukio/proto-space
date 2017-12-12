@@ -1,6 +1,6 @@
-= render "layouts/logo_navbar"
+= render "logo_navbar"
 .container.proto-list
   .row
     = render partial: "prototype", collection: @prototypes
-.text-center
-  = paginate @prototypes
+.text-center#pagination
+  = render "pagination", prototypes: @prototypes

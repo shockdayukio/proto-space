@@ -6,8 +6,8 @@
   .container
     .row
       = content_tag :ul, class: "nav nav-pills col-lg-11" do
-        = content_tag :li, class: "active", role: "presentation" do
-          = link_to "Popular PROTO", popular_index_path
-        = content_tag :li, role: "presentation" do
-          = link_to "Newest PROTO", newest_index_path
+        = content_tag :li, role: "presentation", class: "active", id: "popular" do
+          = link_to "Popular PROTO", popular_index_path, remote: true
+        = content_tag :li, role: "presentation", id: "newest" do
+          = link_to "Newest PROTO", newest_index_path, remote: true
       %button{type: "button", class: "btn btn-default col-lg-1"} View Tags
