@@ -29,4 +29,8 @@ class Prototype < ApplicationRecord
   def comment_num
     self.comments.size
   end
+
+  def created_at
+    self['created_at'].to_s(:db)
+  end
 end
