@@ -7,8 +7,8 @@ class Prototype < ApplicationRecord
 
   validates :name, :catch_copy, :concept ,presence: true
 
-  scope :created_at, -> { order("created_at DESC") }
-  scope :like_count, -> { order("like_count DESC") }
+  scope :newest_order, -> { order("created_at DESC") }
+  scope :from_highest_count, -> { order("like_count DESC") }
 
   NUMBER_OF_DISPLAYED_PROTOTYPES = 8
 
