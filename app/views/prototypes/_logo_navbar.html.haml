@@ -1,0 +1,13 @@
+.jumbotron
+  .container.text-center
+    = image_tag("header_logo.png", alt: "PROTO TYPE - SHARE THE PROTOTYPE", height: "73px")
+
+.filter-nav
+  .container
+    .row
+      = content_tag :ul, class: "nav nav-pills col-lg-11" do
+        = content_tag :li, role: "presentation", class: "active", id: "popular" do
+          = link_to "Popular PROTO", prototypes_popular_index_path, remote: true
+        = content_tag :li, role: "presentation", id: "newest" do
+          = link_to "Newest PROTO", prototypes_newest_index_path, remote: true
+      %button{type: "button", class: "btn btn-default col-lg-1"} View Tags

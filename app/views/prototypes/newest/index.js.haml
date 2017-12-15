@@ -1,0 +1,4 @@
+$(".nav-pills li").removeClass("active")
+$(".nav-pills #newest").addClass("active")
+$(".proto-list .row").html("#{ j(render partial: "prototypes/prototype", collection: @prototypes)}")
+$("#pagination").html("#{ j(render "prototypes/pagination", prototypes: @prototypes)}")
