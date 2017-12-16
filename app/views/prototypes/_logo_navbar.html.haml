@@ -10,4 +10,5 @@
           = link_to "Popular PROTO", prototypes_popular_index_path, remote: true
         = content_tag :li, role: "presentation", id: "newest" do
           = link_to "Newest PROTO", prototypes_newest_index_path, remote: true
-      = link_to "View tags", tags_path, class: "btn btn-default col-lg-1"
+        = content_tag :li, role: "presentation", class: "nav-button__right" do
+          = link_to "View tags", tags_path, class: "btn btn-default col-lg-1"
