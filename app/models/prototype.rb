@@ -5,6 +5,8 @@ class Prototype < ApplicationRecord
   has_many :likes
   has_many :comments
 
+  acts_as_taggable
+
   validates :name, :catch_copy, :concept ,presence: true
 
   scope :newest_order, -> { order("created_at DESC") }
@@ -34,6 +36,6 @@ class Prototype < ApplicationRecord
   end
 
   def created_at
-    self['created_at'].to_s(:db)
+    self['created_at'].to_s(:date)
   end
 end
