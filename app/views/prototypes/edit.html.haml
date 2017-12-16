@@ -32,11 +32,11 @@
           %h4 Tag List
           .row
             .col-md-3
-              %input{type: "text", placeholder: "Web Design"}/
+              = text_field_tag 'prototype[tag_list][]', @prototype.tag_list[0]
             .col-md-3
-              %input{type: "text", placeholder: "UI"}/
+              = text_field_tag 'prototype[tag_list][]', @prototype.tag_list[1]
             .col-md-3
-              %input{type: "text", placeholder: "Application"}/
+              = text_field_tag 'prototype[tag_list][]', @prototype.tag_list[2]
         = f.hidden_field :user_id, value: current_user.id
       .row.text-center.proto-btn
         = f.submit "Publish", class: "button btn btn-lg btn-primary btn-block"
