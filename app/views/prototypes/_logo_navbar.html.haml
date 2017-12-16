@@ -10,4 +10,4 @@
           = link_to "Popular PROTO", prototypes_popular_index_path, remote: true
         = content_tag :li, role: "presentation", id: "newest" do
           = link_to "Newest PROTO", prototypes_newest_index_path, remote: true
-      %button{type: "button", class: "btn btn-default col-lg-1"} View Tags
+      = link_to "View tags", tags_path, class: "btn btn-default col-lg-1"
