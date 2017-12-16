@@ -5,14 +5,14 @@ class TagsController < ApplicationController
   end
 
   def show
-    @tag = tag.find(params[:id])
+    @tag = tag.find(tag_params[:id])
     @prototypes_count = Prototype.tagged_with(@tag).length
-    @prototypes = Prototype.tagged_with(@tag).includes(:user, :taggings).page(params[:page]).per(Prototype::NUMBER_OF_DISPLAYED_PROTOTYPES)
+    @prototypes = Prototype.tagged_with(@tag.name).includes(:user, :taggings).page(@tag.name).per(Prototype::NUMBER_OF_DISPLAYED_PROTOTYPES)
   end
 
   private
   def tag_params
-    params.permit[:id]
+    params.permit(:id)
   end
 
   def tag
