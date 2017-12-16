@@ -1,1 +1,1 @@
-Time::DATE_FORMATS[:db] = "%Y %b %d"
+Time::DATE_FORMATS[:date] = "%Y %b %d"
