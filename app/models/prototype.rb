@@ -11,7 +11,7 @@ class Prototype < ApplicationRecord
   validate :no_more_than_three_tags
 
   def no_more_than_three_tags
-    if self.tag_list.count > 3
+    if self.tag_list.count > NUMBER_OF_TAGS_IN_A_PROTOTYPE
       errors.add('tags', 'cannot be contained more than #{NUMBER_OF_TAGS_IN_A_PROTOTYPE}')
     end
   end
