@@ -14,6 +14,8 @@ class Prototype < ApplicationRecord
 
   NUMBER_OF_DISPLAYED_PROTOTYPES = 8
 
+  NUMBER_OF_TAGS_IN_A_PROTOTYPE = 3
+
   def main_image
     self.captured_images.main.present? ? self.captured_images.main.first.image : 'no-image.png'
   end

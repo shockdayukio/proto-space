@@ -12,6 +12,7 @@ class PrototypesController < ApplicationController
   end
 
   def new
+    @placeholders = [ "Web design", "UI", "Application"]
     @prototype = Prototype.new
     @prototype.captured_images.build
   end
