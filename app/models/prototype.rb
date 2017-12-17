@@ -8,12 +8,19 @@ class Prototype < ApplicationRecord
   acts_as_taggable
 
   validates :name, :catch_copy, :concept ,presence: true
+  validate :no_more_than_three_tags
+
+  def no_more_than_three_tags
+    if self.tag_list.count > 3
+      errors.add('tags', 'cannot be contained more than #{NUMBER_OF_TAGS_IN_A_PROTOTYPE}')
+    end
+  end
+
 
   scope :newest_order, -> { order("created_at DESC") }
   scope :from_highest_count, -> { order("like_count DESC") }
 
   NUMBER_OF_DISPLAYED_PROTOTYPES = 8
-
   NUMBER_OF_TAGS_IN_A_PROTOTYPE = 3
 
   def main_image
