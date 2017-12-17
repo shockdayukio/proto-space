@@ -13,5 +13,5 @@ Rails.application.routes.draw do
   end
 
   resources :likes, only:[:create, :destroy]
-  resources :tags, only:[:index, :show]
+  resources :tags, only:[:index, :show], param: :name
 end
