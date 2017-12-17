@@ -11,16 +11,10 @@
               = image_form.file_field :image
               = image_form.hidden_field :status, value: "main"
           .col-md-12
-            %ul.proto-sub-list.list-
+            %ul.proto-sub-list
             = f.fields_for :captured_images do |image_form|
-              %li.list-group-item.col-md-4
-                .image-upload
-                  = image_form.file_field :image
-                  = image_form.hidden_field :status, value: "sub"
-              %li.list-group-item.col-md-4
-                .image-upload
-                  = image_form.file_field :image
-                  = image_form.hidden_field :status, value: "sub"
+              - Prototype::NUMBER_OF_SUB_IMAGES_IN_PROTOTYPE_FORM.times do
+                = render "sub_images_form", image_form: image_form
               %li.list-group-item.col-md-4
                 .image-upload-plus
                   %span +
