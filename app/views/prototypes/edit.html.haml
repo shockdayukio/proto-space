@@ -31,12 +31,7 @@
         .col-md-12
           %h4 Tag List
           .row
-            .col-md-3
-              %input{type: "text", placeholder: "Web Design"}/
-            .col-md-3
-              %input{type: "text", placeholder: "UI"}/
-            .col-md-3
-              %input{type: "text", placeholder: "Application"}/
+            = render partial: "tags/tag_form", collection: @prototype.tags, as: :tag
         = f.hidden_field :user_id, value: current_user.id
       .row.text-center.proto-btn
         = f.submit "Publish", class: "button btn btn-lg btn-primary btn-block"

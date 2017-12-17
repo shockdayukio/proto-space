@@ -21,7 +21,4 @@
           .proto-posted
             = prototype.created_at
         %ul.proto-tag-list.list-inline
-          %li
-            %a{href: "#", class: "btn btn-default"} iPad
-          %li
-            %a{href: "#", class: "btn btn-default"} wireframe
+          = render partial: "tags/tag", collection: prototype.tags

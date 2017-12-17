@@ -5,12 +5,23 @@ class Prototype < ApplicationRecord
   has_many :likes
   has_many :comments
 
+  acts_as_taggable
+
   validates :name, :catch_copy, :concept ,presence: true
+  validate :no_more_than_three_tags
+
+  def no_more_than_three_tags
+    if self.tag_list.count > NUMBER_OF_TAGS_IN_A_PROTOTYPE
+      errors.add('tags', 'cannot be contained more than #{NUMBER_OF_TAGS_IN_A_PROTOTYPE}')
+    end
+  end
+
 
   scope :newest_order, -> { order("created_at DESC") }
   scope :from_highest_count, -> { order("like_count DESC") }
 
   NUMBER_OF_DISPLAYED_PROTOTYPES = 8
+  NUMBER_OF_TAGS_IN_A_PROTOTYPE = 3
 
   def main_image
     self.captured_images.main.present? ? self.captured_images.main.first.image : 'no-image.png'
@@ -34,6 +45,6 @@ class Prototype < ApplicationRecord
   end
 
   def created_at
-    self['created_at'].to_s(:db)
+    self['created_at'].to_s(:date)
   end
 end

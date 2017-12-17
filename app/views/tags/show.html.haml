@@ -1,0 +1,14 @@
+.container.user-page
+  %header.user-nav
+    .media
+      .media-body
+        = content_tag :h4, class: "media-heading", id: "top-aligned-media" do
+          = @tag.name
+          %span.label.label-default.project-number
+            = @prototypes_count
+            %i Projects
+.container.proto-list
+  .row
+    = render partial: "prototypes/prototype", collection: @prototypes
+.text-center#pagination
+  = paginate @prototypes

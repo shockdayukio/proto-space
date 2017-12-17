@@ -4,8 +4,7 @@ class PrototypesController < ApplicationController
   before_action :set_prototype, only: [:show, :edit, :update, :destroy]
 
   def index
-    @prototypes = Prototype.includes(:user).page(params[:page]).per(Prototype::
-  NUMBER_OF_DISPLAYED_PROTOTYPES)
+    @prototypes = Prototype.includes(:user, :tags).page(params[:page]).per(Prototype::NUMBER_OF_DISPLAYED_PROTOTYPES)
   end
 
   def show
@@ -13,6 +12,7 @@ class PrototypesController < ApplicationController
   end
 
   def new
+    @placeholders = %W(Web\sdesign UI Application)
     @prototype = Prototype.new
     @prototype.captured_images.build
   end
@@ -52,7 +52,7 @@ class PrototypesController < ApplicationController
 
   private
   def prototype_params
-    params.require(:prototype).permit(:name, :catch_copy, :concept, :user_id, captured_images_attributes: [:id, :image, :status])
+    params.require(:prototype).permit(:name, :catch_copy, :concept, :user_id, tag_list: [], captured_images_attributes: [:id, :image, :status])
   end
 
   def set_prototype

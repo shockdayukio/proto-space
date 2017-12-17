@@ -1,0 +1,11 @@
+.container.user-page
+  %header.user-nav
+    .media
+      .media-body
+        = content_tag :h4, class: "media-heading", id: "top-aligned-media" do
+          Tag List
+          %span.label.label-default.project-number
+            = @tags.length
+            %i Projects
+  = content_tag :ul, class: "proto-tag-list list-inline" do
+    = render partial: "tag", collection: @tags

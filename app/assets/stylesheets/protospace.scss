@@ -286,6 +286,9 @@ body {
   padding: 20px 0;
   margin-bottom: 20px;
 
+  .nav-button__right {
+    float: right;
+  }
 }
 
 .proto-content {
@@ -594,6 +597,13 @@ body {
     }
   }
 }
+
+/*-- footer --------------------------------------------- */
+
+footer{
+  text-align: center;
+}
+
 
 /*-- tag --------------------------------------------- */
 .tag {
