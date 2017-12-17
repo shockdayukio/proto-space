@@ -511,17 +511,19 @@ body {
   }
 
   .user-image {
-    border: 2px solid #ddd;
-    border-radius: 50%;
-    width: 75px;
-    height: 75px;
-    position: relative;
-    background-color: #fff;
-    background-size: cover;
+    img {
+      border: 2px solid #ddd;
+      border-radius: 50%;
+      width: 75px;
+      height: 75px;
+      position: relative;
+      background-color: #fff;
+      background-size: cover;
+    }
 
     button {
       font-size: 9px;
-      position: absolute;
+      position: relative;
       bottom: 0;
       left: 0;
       right: 0;
