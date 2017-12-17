@@ -32,12 +32,8 @@
         .col-md-12
           %h4 Tag List
           .row
-            .col-md-3
-              %input{type: "text", placeholder: "Web Design"}/
-            .col-md-3
-              %input{type: "text", placeholder: "UI"}/
-            .col-md-3
-              %input{type: "text", placeholder: "Application"}/
+            - Prototype::NUMBER_OF_TAGS_IN_A_PROTOTYPE.times do |i|
+              = render "tags/tag_new_form", tag_list: @prototype.tag_list, placeholders: @placeholders, i: i
         = f.hidden_field :user_id, value: current_user.id
       .row.text-center.proto-btn
         = f.submit "Publish", class: "button btn btn-lg btn-primary btn-block"
