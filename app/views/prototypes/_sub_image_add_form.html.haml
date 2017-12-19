@@ -1,0 +1,6 @@
+= content_tag :li, class: "list-group-item col-md-4" do
+  .image-upload
+    %img
+    = file_field_tag "prototype[captured_images_attributes][3][image]", class: "js-image-file"
+    = hidden_field_tag "prototype[captured_images_attributes][3][status]", value: "sub"
+

@@ -10,14 +10,15 @@
             %img
             = image_form.file_field :image, class: "js-image-file"
             = image_form.hidden_field :status, value: "main"
-          .col-md-12
-            %ul.proto-sub-list
-            = f.fields_for :captured_images do |image_form|
-              - Prototype::NUMBER_OF_SUB_IMAGES_IN_PROTOTYPE_FORM.times do
-                = render "sub_image_new_form", image_form: image_form
-              %li.list-group-item.col-md-4
-                .image-upload-plus
-                  %span +
+          .col-md-12.proto-sub-list
+            %ul#js-proto-sub-list
+              = f.fields_for :captured_images do |image_form|
+                - Prototype::NUMBER_OF_SUB_IMAGES_IN_PROTOTYPE_FORM.times do
+                  = render "sub_image_new_form", image_form: image_form
+              %li.list-group-item.col-md-4#js-image-plus
+                = link_to new_prototype_path, remote: true do
+                  .image-upload-plus
+                    %span +
       .row.proto-description
         .col-md-12
           = f.text_field :catch_copy, placeholder: "Catch Copy"
