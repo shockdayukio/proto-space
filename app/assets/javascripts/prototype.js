@@ -1,14 +1,13 @@
 $(function(){
   $('.js-image-file').change(function(){
+
     var file = this.files[0];
-    var type = $(this).siblings('.js-image-hidden').val();
-    var object = $(this).parent('div');
+    var image = $(this).siblings('img');
     fileReader = new FileReader();
 
     fileReader.onload = function(event) {
-      object.css({
-        "background": `url(${event.target.result}) no-repeat center center `,
-        "background-size": "cover"
+      image.attr({
+        "src": event.target.result,
       });
     };
     fileReader.readAsDataURL(file);
