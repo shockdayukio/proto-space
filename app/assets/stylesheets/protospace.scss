@@ -422,6 +422,19 @@ body {
     position: relative;
     margin-bottom: 20px;
 
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: auto;
+      height: auto;
+      margin: auto;
+      max-height: 100%;
+      max-width: 100%;
+    }
+
     input {
       position: absolute;
       left: 0;
@@ -443,6 +456,18 @@ body {
       background: image-url("noimage.png") #fff no-repeat center center;
       height: 200px;
       position: relative;
+
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: auto;
+        height: auto;
+        margin: auto;
+        max-height: 100%;
+        max-width: 100%;
+      }
 
       input {
         position: absolute;
