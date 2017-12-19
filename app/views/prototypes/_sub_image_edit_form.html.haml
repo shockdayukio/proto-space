@@ -1,0 +1,6 @@
+%li.list-group-item.col-md-4
+  .image-upload
+    - if sub_images[i].present?
+      = image_tag sub_images[i].image
+    = image_form.file_field :image, class: "js-image-file"
+    = image_form.hidden_field :status, value: "sub"
