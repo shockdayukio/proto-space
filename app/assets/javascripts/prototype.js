@@ -1,5 +1,5 @@
 $(function(){
-  $('.js-image-file').change(function(){
+  $(document).on('change', '.js-image-file', function(){
 
     var file = this.files[0];
     var image = $(this).siblings('img');
