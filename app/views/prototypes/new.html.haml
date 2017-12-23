@@ -15,10 +15,7 @@
               = f.fields_for :captured_images do |image_form|
                 - Prototype::NUMBER_OF_SUB_IMAGES_IN_PROTOTYPE_FORM.times do
                   = render "sub_image_new_form", image_form: image_form
-              %li.list-group-item.col-md-4#js-image-plus
-                = link_to new_prototype_path, remote: true do
-                  .image-upload-plus
-                    %span +
+              = render "sub_image_plus"
       .row.proto-description
         .col-md-12
           = f.text_field :catch_copy, placeholder: "Catch Copy"
