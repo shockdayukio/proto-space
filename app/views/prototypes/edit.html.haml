@@ -13,8 +13,7 @@
           .col-md-12.proto-sub-list
             %ul#js-proto-sub-list
               = f.fields_for :captured_images, @prototype.sub_images do |image_form|
-                - Prototype::NUMBER_OF_SUB_IMAGES_IN_PROTOTYPE_FORM.times do |i|
-                  = render "sub_image_edit_form", image_form: image_form, sub_images: @prototype.sub_images, i: i
+                = render "sub_image_edit_form", image_form: image_form
               = render "sub_image_plus"
       .row.proto-description
         .col-md-12
