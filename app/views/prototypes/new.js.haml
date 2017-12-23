@@ -1,2 +1,4 @@
 $('#js-image-plus').remove();
 $('#js-proto-sub-list').append( "#{j(render "sub_image_add_form")}" );
+var sub_images_count = $('#js-proto-sub-list .js-image-file').length;
+if(sub_images_count < "#{ Prototype::NUMBER_OF_SUB_IMAGES_IN_PROTOTYPE }"){ $("#js-proto-sub-list").append("#{ j(render "sub_image_plus") }")};
