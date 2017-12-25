@@ -1,6 +1,6 @@
 $(function(){
   $('#js-avatar-input').change(function(e){
-    var file = this.files[0];
+    var file = this.files[INDEX_OF_IMAGE_FILE_IN_JQUERY_OBJECT];
     var img = $(this).siblings('img');
     var fileReader = new FileReader();
 
