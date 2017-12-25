@@ -1,6 +1,6 @@
 const MAXIMUM_NUMBER_OF_SUB_IMAGES_IN_PROTOTYPE = 6;
 const INDEX_OF_IMAGE_FILE_IN_JQUERY_OBJECT = 0;
-const NUMBER_TO_ADJUST_INDEX_OF_IMAGE = 1
+const NUMBER_TO_ADJUST_INDEX_OF_IMAGE = 1;
 
 function appendSubImageForm(sub_image_id){
   var html = '<li class="list-group-item col-md-4">'+
