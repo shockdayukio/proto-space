@@ -9,13 +9,19 @@ class Prototype < ApplicationRecord
 
   validates :name, :catch_copy, :concept ,presence: true
   validate :no_more_than_three_tags
+  validate :no_more_than_six_sub_images
 
   def no_more_than_three_tags
     if self.tag_list.count > NUMBER_OF_TAGS_IN_A_PROTOTYPE
-      errors.add('tags', 'cannot be contained more than #{NUMBER_OF_TAGS_IN_A_PROTOTYPE}')
+      errors.add('tags', "cannot be contained more than #{NUMBER_OF_TAGS_IN_A_PROTOTYPE}")
     end
   end
 
+  def no_more_than_six_sub_images
+    if self.sub_images.count > MAXIMUM_NUMBER_OF_SUB_IMAGES_IN_PROTOTYPE
+      errors.add('sub_images', "cannot be contained more than #{MAXIMUM_NUMBER_OF_SUB_IMAGES_IN_PROTOTYPE}")
+    end
+  end
 
   scope :newest_order, -> { order("created_at DESC") }
   scope :from_highest_count, -> { order("like_count DESC") }
