@@ -14,7 +14,8 @@
             %ul#js-proto-sub-list
               = f.fields_for :captured_images, @prototype.sub_images do |image_form|
                 = render "sub_image_edit_form", image_form: image_form
-              = render "sub_image_plus"
+              - if @prototype.sub_images.length < Prototype::MAXIMUM_NUMBER_OF_SUB_IMAGES_IN_PROTOTYPE
+                = render "sub_image_plus"
       .row.proto-description
         .col-md-12
           = f.text_field :catch_copy, placeholder: "Catch Copy"
