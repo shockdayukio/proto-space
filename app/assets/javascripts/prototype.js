@@ -1,4 +1,6 @@
 const MAXIMUM_NUMBER_OF_SUB_IMAGES_IN_PROTOTYPE = 6;
+const INDEX_OF_IMAGE_FILE_IN_JQUERY_OBJECT = 0;
+const NUMBER_TO_ADJUST_INDEX_OF_IMAGE = 1
 
 function appendSubImageForm(sub_image_id){
   var html = '<li class="list-group-item col-md-4">'+
@@ -20,8 +22,8 @@ function appendButtonToAddSubImageForm(){
   $("#js-proto-sub-list").append(html);
 };
 
-$('.js-image-file').on('change', function(){
-  var file = this.files[0];
+$(document).on('change', '.js-image-file', function(){
+  var file = this.files[INDEX_OF_IMAGE_FILE_IN_JQUERY_OBJECT];
   var image = $(this).siblings('img');
   var fileReader = new FileReader();
 
@@ -35,8 +37,8 @@ $('.js-image-file').on('change', function(){
 
 $(document).on('click', '#js-image-plus', function(){
   $('#js-image-plus').remove();
-  var sub_images_count = $("#js-proto-sub-list .js-image-file").length + 1;
-  if (sub_images_count < MAXIMUM_NUMBER_OF_SUB_IMAGES_IN_PROTOTYPE + 1){
+  var sub_images_count = $("#js-proto-sub-list .js-image-file").length + NUMBER_TO_ADJUST_INDEX_OF_IMAGE;
+  if (sub_images_count < MAXIMUM_NUMBER_OF_SUB_IMAGES_IN_PROTOTYPE + NUMBER_TO_ADJUST_INDEX_OF_IMAGE){
     var sub_image_id = sub_images_count;
     appendSubImageForm(sub_image_id);
     if (sub_images_count < MAXIMUM_NUMBER_OF_SUB_IMAGES_IN_PROTOTYPE){
