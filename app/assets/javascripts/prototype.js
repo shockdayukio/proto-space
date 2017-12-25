@@ -11,7 +11,7 @@ function appendSubImageForm(sub_image_id){
   $('#js-proto-sub-list').append(html);
 };
 
-function appendPlus(){
+function appendButtonToAddSubImageForm(){
   var html = '<li class="list-group-item col-md-4" id="js-image-plus">'+
                '<div class="image-upload-plus">' +
                  '<span> +' +
@@ -20,35 +20,30 @@ function appendPlus(){
   $("#js-proto-sub-list").append(html);
 };
 
-$(function(){
-  $(document).on('change', '.js-image-file', function(){
-    var file;
-    var image;
-    var fileReader;
-    file = this.files[0];
-    image = $(this).siblings('img');
-    fileReader = new FileReader();
+$('.js-image-file').on('change', function(){
+  var file;
+  var image;
+  var fileReader;
+  file = this.files[0];
+  image = $(this).siblings('img');
+  fileReader = new FileReader();
 
-    fileReader.onload = function(event) {
-      image.attr({
-        "src": event.target.result,
-      });
-    };
-    fileReader.readAsDataURL(file);
-  });
+  fileReader.onload = function(event) {
+    image.attr({
+      "src": event.target.result,
+    });
+  };
+  fileReader.readAsDataURL(file);
 });
 
-$(function(){
-  $(document).on('click', '#js-image-plus', function(){
-    $('#js-image-plus').remove();
-    var sub_images_count = $("#js-proto-sub-list .js-image-file").length + 1;
-    if (sub_images_count < MAXIMUM_NUMBER_OF_SUB_IMAGES_IN_PROTOTYPE + 1){
-      var sub_image_id = sub_images_count;
-      appendSubImageForm(sub_image_id);
-      if (sub_images_count < MAXIMUM_NUMBER_OF_SUB_IMAGES_IN_PROTOTYPE){
-        appendPlus();
-      }
-    };
-
-  });
+$(document).on('click', '#js-image-plus', function(){
+  $('#js-image-plus').remove();
+  var sub_images_count = $("#js-proto-sub-list .js-image-file").length + 1;
+  if (sub_images_count < MAXIMUM_NUMBER_OF_SUB_IMAGES_IN_PROTOTYPE + 1){
+    var sub_image_id = sub_images_count;
+    appendSubImageForm(sub_image_id);
+    if (sub_images_count < MAXIMUM_NUMBER_OF_SUB_IMAGES_IN_PROTOTYPE){
+      appendButtonToAddSubImageForm();
+    }
+  };
 });
