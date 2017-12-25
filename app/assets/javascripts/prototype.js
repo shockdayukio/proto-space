@@ -21,12 +21,9 @@ function appendButtonToAddSubImageForm(){
 };
 
 $('.js-image-file').on('change', function(){
-  var file;
-  var image;
-  var fileReader;
-  file = this.files[0];
-  image = $(this).siblings('img');
-  fileReader = new FileReader();
+  var file = this.files[0];
+  var image = $(this).siblings('img');
+  var fileReader = new FileReader();
 
   fileReader.onload = function(event) {
     image.attr({
