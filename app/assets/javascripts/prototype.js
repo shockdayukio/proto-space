@@ -5,7 +5,7 @@ function appendSubImageForm(sub_image_id){
   var html = '<li class="list-group-item col-md-4">'+
                '<div class="image-upload">' +
                  '<img>' +
-                 '<input type="file" name="prototype[captured_images_attributes][' + sub_image_id + '][image]" id="prototype_captured_images_attributes_' + sub_image_id + '_image" class="js-image-file js-image">' +
+                 '<input type="file" name="prototype[captured_images_attributes][' + sub_image_id + '][image]" id="prototype_captured_images_attributes_' + sub_image_id + '_image" class="js-sub-image-file js-image">' +
                  '<input type="hidden" name="prototype[captured_images_attributes][' + sub_image_id + '][status]" id="prototype_captured_images_attributes_' + sub_image_id + '_status" value="sub">' +
                '</div>' +
              '</li>';
@@ -21,7 +21,7 @@ function appendSubImageFormButton(){
   $("#js-proto-sub-list").append(html);
 };
 
-$(document).on('change', '.js-image-file', function(){
+$(document).on('change', '.js-sub-image-file', function(){
   var file = this.files[INDEX_OF_IMAGE_FILE];
   var image = $(this).siblings('img');
   var fileReader = new FileReader();
