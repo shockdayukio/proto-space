@@ -1,5 +1,20 @@
 class Prototype < ApplicationRecord
 
+  belongs_to :user
+  has_many :captured_images, inverse_of: :prototype, dependent: :destroy
+  accepts_nested_attributes_for :captured_images
+  has_many :likes
+  has_many :comments
+
+  acts_as_taggable
+
+  validates :name, :catch_copy, :concept ,presence: true
+  validate :no_more_than_three_tags
+  validate :no_more_than_six_sub_images
+
+  scope :newest_order, -> { order("created_at DESC") }
+  scope :from_highest_count, -> { order("like_count DESC") }
+
   NUMBER_OF_DISPLAYED_PROTOTYPES = 8
   NUMBER_OF_SUB_IMAGES_IN_NEW_PROTOTYPE_FORM = 2
   MAXIMUM_NUMBER_OF_SUB_IMAGES_IN_PROTOTYPE = 6
@@ -41,20 +56,5 @@ class Prototype < ApplicationRecord
   def created_at
     self['created_at'].to_s(:date)
   end
-
-  belongs_to :user
-  has_many :captured_images, inverse_of: :prototype, dependent: :destroy
-  accepts_nested_attributes_for :captured_images
-  has_many :likes
-  has_many :comments
-
-  acts_as_taggable
-
-  validates :name, :catch_copy, :concept ,presence: true
-  validate :no_more_than_three_tags
-  validate :no_more_than_six_sub_images
-
-  scope :newest_order, -> { order("created_at DESC") }
-  scope :from_highest_count, -> { order("like_count DESC") }
 
 end
