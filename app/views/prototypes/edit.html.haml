@@ -8,7 +8,7 @@
         = f.fields_for :captured_images, @prototype.captured_images.main.first do |image_form|
           .cover-image-upload.col-md-12
             = image_tag @prototype.main_image
-            = image_form.file_field :image, class: "js-image-file"
+            = image_form.file_field :image, class: "js-sub-image-file"
             = image_form.hidden_field :status, value: "main"
           .col-md-12.proto-sub-list
             %ul#js-proto-sub-list
