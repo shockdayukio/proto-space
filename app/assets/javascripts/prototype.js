@@ -2,7 +2,7 @@ const MAXIMUM_NUMBER_OF_SUB_IMAGES_IN_PROTOTYPE = 6;
 const INDEX_OF_IMAGE_FILE = 0;
 
 function appendSubImageForm(sub_image_id){
-  var html = '<li class="list-group-item col-md-4">'+
+  var html = '<li class="sub-image-item col-md-4">'+
                '<div class="image-upload">' +
                  '<img>' +
                  '<input type="file" name="prototype[captured_images_attributes][' + sub_image_id + '][image]" id="prototype_captured_images_attributes_' + sub_image_id + '_image" class="js-sub-image-file js-image">' +
@@ -13,7 +13,7 @@ function appendSubImageForm(sub_image_id){
 };
 
 function appendSubImageFormButton(){
-  var html = '<li class="list-group-item col-md-4" id="js-image-plus">'+
+  var html = '<li class="sub-image-item col-md-4" id="js-image-plus">'+
                '<div class="image-upload-plus">' +
                  '<span> +' +
                '</div>' +
@@ -35,7 +35,7 @@ $(document).on('change', '.js-sub-image-file', function(){
 });
 
 $(document).on('click', '#js-image-plus', function(){
-  var group_items_count = $(".list-group-item").length;
+  var group_items_count = $(".sub-image-item").length;
   $(this).remove();
   if (group_items_count <= MAXIMUM_NUMBER_OF_SUB_IMAGES_IN_PROTOTYPE){
     var sub_image_id = group_items_count;
