@@ -36,7 +36,7 @@ $(document).on('change', '.js-sub-image-file', function(){
 
 $(document).on('click', '#js-image-plus', function(){
   var group_items_count = $(".list-group-item").length;
-  $('#js-image-plus').remove();
+  $(this).remove();
   if (group_items_count <= MAXIMUM_NUMBER_OF_SUB_IMAGES_IN_PROTOTYPE){
     var sub_image_id = group_items_count;
     appendSubImageForm(sub_image_id);
