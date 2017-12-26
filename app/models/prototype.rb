@@ -18,7 +18,7 @@ class Prototype < ApplicationRecord
   end
 
   def no_more_than_six_sub_images
-    if self.sub_images.count > MAXIMUM_NUMBER_OF_SUB_IMAGES_IN_PROTOTYPE
+    if self.captured_images.select{|image| image.status == "sub"}.length > MAXIMUM_NUMBER_OF_SUB_IMAGES_IN_PROTOTYPE
       errors.add('sub_images', "cannot be contained more than #{MAXIMUM_NUMBER_OF_SUB_IMAGES_IN_PROTOTYPE}")
     end
   end
