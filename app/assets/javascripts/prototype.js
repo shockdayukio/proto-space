@@ -12,7 +12,7 @@ function appendSubImageForm(sub_image_id){
   $('#js-proto-sub-list').append(html);
 };
 
-function appendButtonToAddSubImageForm(){
+function appendSubImageFormButton(){
   var html = '<li class="list-group-item col-md-4" id="js-image-plus">'+
                '<div class="image-upload-plus">' +
                  '<span> +' +
@@ -41,7 +41,7 @@ $(document).on('click', '#js-image-plus', function(){
     var sub_image_id = group_items_count;
     appendSubImageForm(sub_image_id);
     if (group_items_count < MAXIMUM_NUMBER_OF_SUB_IMAGES_IN_PROTOTYPE){
-      appendButtonToAddSubImageForm();
+      appendSubImageFormButton();
     }
   };
 });
