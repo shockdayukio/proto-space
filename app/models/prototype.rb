@@ -1,4 +1,8 @@
 class Prototype < ApplicationRecord
+  NUMBER_OF_DISPLAYED_PROTOTYPES = 8
+  NUMBER_OF_SUB_IMAGES_IN_NEW_PROTOTYPE_FORM = 2
+  MAXIMUM_NUMBER_OF_SUB_IMAGES_IN_PROTOTYPE = 6
+  NUMBER_OF_TAGS_IN_A_PROTOTYPE = 3
 
   belongs_to :user
   has_many :captured_images, inverse_of: :prototype, dependent: :destroy
@@ -14,11 +18,6 @@ class Prototype < ApplicationRecord
 
   scope :newest_order, -> { order("created_at DESC") }
   scope :from_highest_count, -> { order("like_count DESC") }
-
-  NUMBER_OF_DISPLAYED_PROTOTYPES = 8
-  NUMBER_OF_SUB_IMAGES_IN_NEW_PROTOTYPE_FORM = 2
-  MAXIMUM_NUMBER_OF_SUB_IMAGES_IN_PROTOTYPE = 6
-  NUMBER_OF_TAGS_IN_A_PROTOTYPE = 3
 
   def no_more_than_three_tags
     if self.tag_list.count > NUMBER_OF_TAGS_IN_A_PROTOTYPE
