@@ -39,7 +39,6 @@ $(document).on('click', '#js-image-plus', function(){
   $(this).remove();
   if (sub_image_item_count <= MAXIMUM_NUMBER_OF_SUB_IMAGES_IN_PROTOTYPE){
     var sub_image_id = $(".js-image-file").length;
-    console.log(sub_image_id);
     appendSubImageForm(sub_image_id);
     if (sub_image_item_count < MAXIMUM_NUMBER_OF_SUB_IMAGES_IN_PROTOTYPE){
       appendSubImageFormButton();
