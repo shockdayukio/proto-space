@@ -9,8 +9,9 @@
             .user-name.col-md-10
               = f.text_field :name, placeholder: "Username"
             .user-image.col-md-2
-              %button.btn.btn-primary Add image
-              = f.file_field :image
+              %img
+                %button.btn.btn-primary Add image
+                = f.file_field :avatar, id: "js-avatar-input"
           .user-user-profile.row
             .user-name.col-md-12
               = f.email_field :email, placeholder: "E-Mail", class: "user-email"

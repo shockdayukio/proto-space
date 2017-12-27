@@ -1,0 +1,5 @@
+%li.sub-image-item.col-md-4
+  .image-upload
+    %img
+    = image_form.file_field :image, class: "js-image-file"
+    = image_form.hidden_field :status, value: "sub"

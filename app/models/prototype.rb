@@ -1,4 +1,9 @@
 class Prototype < ApplicationRecord
+  NUMBER_OF_DISPLAYED_PROTOTYPES = 8
+  NUMBER_OF_SUB_IMAGES_IN_NEW_PROTOTYPE_FORM = 2
+  MAXIMUM_NUMBER_OF_SUB_IMAGES_IN_PROTOTYPE = 6
+  NUMBER_OF_TAGS_IN_A_PROTOTYPE = 3
+
   belongs_to :user
   has_many :captured_images, inverse_of: :prototype, dependent: :destroy
   accepts_nested_attributes_for :captured_images
@@ -9,19 +14,22 @@ class Prototype < ApplicationRecord
 
   validates :name, :catch_copy, :concept ,presence: true
   validate :no_more_than_three_tags
-
-  def no_more_than_three_tags
-    if self.tag_list.count > NUMBER_OF_TAGS_IN_A_PROTOTYPE
-      errors.add('tags', 'cannot be contained more than #{NUMBER_OF_TAGS_IN_A_PROTOTYPE}')
-    end
-  end
-
+  validate :no_more_than_six_sub_images
 
   scope :newest_order, -> { order("created_at DESC") }
   scope :from_highest_count, -> { order("like_count DESC") }
 
-  NUMBER_OF_DISPLAYED_PROTOTYPES = 8
-  NUMBER_OF_TAGS_IN_A_PROTOTYPE = 3
+  def no_more_than_three_tags
+    if self.tag_list.count > NUMBER_OF_TAGS_IN_A_PROTOTYPE
+      errors.add('tags', "cannot be contained more than #{NUMBER_OF_TAGS_IN_A_PROTOTYPE}")
+    end
+  end
+
+  def no_more_than_six_sub_images
+    if self.captured_images.select{|image| image.status == "sub"}.length > MAXIMUM_NUMBER_OF_SUB_IMAGES_IN_PROTOTYPE
+      errors.add('sub_images', "cannot be contained more than #{MAXIMUM_NUMBER_OF_SUB_IMAGES_IN_PROTOTYPE}")
+    end
+  end
 
   def main_image
     self.captured_images.main.present? ? self.captured_images.main.first.image : 'no-image.png'
@@ -47,4 +55,5 @@ class Prototype < ApplicationRecord
   def created_at
     self['created_at'].to_s(:date)
   end
+
 end
