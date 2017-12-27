@@ -6,23 +6,16 @@
           = f.text_field :name ,placeholder: "Title", class: "proto-new-title"
       .row
         = f.fields_for :captured_images, @prototype.captured_images.main.first do |image_form|
-          .col-md-12
-            .cover-image-upload
-              = image_form.file_field :image
-              = image_form.hidden_field :status, value: "main"
-            = f.fields_for :captured_images, @prototype.sub_images do |image_form|
-              %ul.proto-sub-list.list-
-                %li.list-group-item.col-md-4
-                  .image-upload
-                    = image_form.file_field :image
-                    = image_form.hidden_field :status, value: "sub"
-                %li.list-group-item.col-md-4
-                  .image-upload
-                    = image_form.file_field :image
-                    = image_form.hidden_field :status, value: "sub"
-                %li.list-group-item.col-md-4
-                  .image-upload-plus
-                    %span +
+          .cover-image-upload.col-md-12
+            = image_tag @prototype.main_image
+            = image_form.file_field :image, class: "js-image-file"
+            = image_form.hidden_field :status, value: "main"
+          .col-md-12.proto-sub-list
+            %ul#js-proto-sub-list
+              = f.fields_for :captured_images, @prototype.sub_images do |image_form|
+                = render "sub_image_edit_form", image_form: image_form
+              - if @prototype.sub_images.length < Prototype::MAXIMUM_NUMBER_OF_SUB_IMAGES_IN_PROTOTYPE
+                = render "sub_image_plus"
       .row.proto-description
         .col-md-12
           = f.text_field :catch_copy, placeholder: "Catch Copy"
