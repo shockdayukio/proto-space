@@ -42,6 +42,8 @@ gem "devise"
 
 gem 'carrierwave', '~> 1.0'
 
+gem 'fog'
+
 gem 'kaminari'
 
 group :development, :test do
@@ -49,6 +51,8 @@ group :development, :test do
   gem 'byebug', platform: :mri
 
   gem 'acts-as-taggable-on', '~> 4.0'
+
+  gem 'dotenv-rails'
 end
 
 group :development do
