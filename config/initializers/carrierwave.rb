@@ -13,12 +13,14 @@ CarrierWave.configure do |config|
     region: 'ap-northeast-1'
   }
 
-case Rails.env
-  when 'development'
-    config.fog_directory  = 'proto-space-image'
-    config.asset_host = ENV['S3_URL']
+  case Rails.env
   when 'production'
     config.fog_directory  = 'proto-space-image-production'
     config.asset_host = ENV['S3_URL']
+  when 'development'
+    config.fog_directory  = 'proto-space-image'
+    config.asset_host = ENV['S3_URL']
+  when 'test'
+    config.storage = :file
   end
 end
