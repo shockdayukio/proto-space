@@ -1,11 +1,10 @@
 class AvatarUploader < CarrierWave::Uploader::Base
 
-  if Rails.env.development?
-    storage :fog
-  elsif Rails.env.test?
-    storage :file
-  else
-    storage :fog
+  case Rails.env
+  when 'production'; storage :fog
+  when 'development'; storage :fog
+  when 'test'; storage :file
+  else storage :file
   end
 
   def store_dir
