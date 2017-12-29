@@ -8,7 +8,7 @@
             = image_tag user.avatar, alt: "64x64", "data-holder-rendered": "true", "data-src": "holder.js/64x64", style: "width: 64px; height: 64px;", class: "media-object"
         .media-body
           %h4#top-aligned-media.media-heading
-            Top aligned media
+            = @prototype.name
           .proto-user
             =link_to "by #{user.name}", user_path(user)
             %span.degree
