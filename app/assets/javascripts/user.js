@@ -1,4 +1,4 @@
-$('#js-avatar-input').change(function(e){
+$(document).on( 'change', '#js-avatar-input', function(e){
   var file = this.files[INDEX_OF_IMAGE_FILE];
   var img = $(this).siblings('img');
   var fileReader = new FileReader();
@@ -9,4 +9,3 @@ $('#js-avatar-input').change(function(e){
 
   fileReader.readAsDataURL(file);
 });
-
