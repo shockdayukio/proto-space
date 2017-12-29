@@ -18,7 +18,7 @@ case Rails.env
     config.fog_directory  = 'proto-space-image'
     config.asset_host = ENV['S3_URL']
   when 'production'
-    config.fog_directory  = 'proto-space-image'
+    config.fog_directory  = 'proto-space-image-production'
     config.asset_host = ENV['S3_URL']
   end
 end
