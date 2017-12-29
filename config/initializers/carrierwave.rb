@@ -2,6 +2,8 @@ require 'carrierwave/storage/abstract'
 require 'carrierwave/storage/file'
 require 'carrierwave/storage/fog'
 
+Dotenv.overload
+
 CarrierWave.configure do |config|
   config.storage = :fog
   config.fog_credentials = {
