@@ -1,4 +1,4 @@
-$(document).on( 'change', '#js-avatar-input', function(e){
+$(document).on( 'change', '#js-avatar-input', function(){
   var file = this.files[INDEX_OF_IMAGE_FILE];
   var img = $(this).siblings('img');
   var fileReader = new FileReader();
