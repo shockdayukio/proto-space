@@ -6,4 +6,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   mount_uploader :avatar, AvatarUploader
+
+  validates :email, :name, :profile, :works, :occupation, :password, :password_confirmation, presence: true
 end
