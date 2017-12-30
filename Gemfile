@@ -53,6 +53,12 @@ group :development, :test do
   gem 'byebug', platform: :mri
 
   gem 'acts-as-taggable-on', '~> 4.0'
+
+  gem 'rspec-rails', '~> 3.6'
+
+  gem 'factory_bot_rails'
+
+  gem 'faker'
 end
 
 group :development do
