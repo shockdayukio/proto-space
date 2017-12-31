@@ -7,5 +7,6 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
 
-  validates :email, :name, :profile, :works, :occupation, :password, :password_confirmation, presence: true
+  validates :name, :profile, :works, :occupation, :password, :password_confirmation, presence: true
+  validates :email, presence: true, uniqueness: true
 end
