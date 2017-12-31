@@ -10,5 +10,9 @@ FactoryBot.define do
     works Faker::Company.profession
     avatar Faker::Avatar.image
     occupation Faker::Company.name
+
+    after(:create) do |user|
+      create_list(:prototype, 3, user: user)
+    end
   end
 end
