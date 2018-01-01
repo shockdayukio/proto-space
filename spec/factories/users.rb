@@ -4,11 +4,10 @@ FactoryBot.define do
   factory :user do
     email Faker::Internet.email
     name Faker::Name.name
+    avatar {fixture_file_upload(Rails.root.join('app/assets/images/shiba.jpg'))}
     password password
-    password_confirmation password
     profile Faker::Hacker.say_something_smart
     works Faker::Company.profession
-    avatar Faker::Avatar.image
     occupation Faker::Company.name
 
     after(:create) do |user|

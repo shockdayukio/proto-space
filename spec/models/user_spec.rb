@@ -1,7 +1,8 @@
 require 'rails_helper'
+include ActionDispatch::TestProcess
 
 describe User do
-  let(:user){ create(:user)}
+  let(:user){ create(:user) }
 
   describe 'validation' do
     context 'when a user is filled all valid attributes' do
@@ -41,6 +42,12 @@ describe User do
         expect(user.errors[:works]).to include("can't be blank")
       end
 
+      it "is invalid without a avatar" do
+        user.avatar = nil
+        user.valid?
+        expect(user.errors[:avatar]).to include("can't be blank")
+      end
+
       it "is invalid without an occupation" do
         user.occupation = nil
         user.valid?
@@ -65,7 +72,6 @@ describe User do
     context 'when checking the length of the password' do
       it "is valid if an user's password is within 6 to 128 characters" do
         user.password = Faker::Internet.password(6, 128, true, true)
-        user.password_confirmation = user.password
         user.valid?
         expect(user).to be_valid
       end
