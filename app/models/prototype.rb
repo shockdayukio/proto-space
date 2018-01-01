@@ -6,9 +6,9 @@ class Prototype < ApplicationRecord
 
   belongs_to :user
   has_many :captured_images, inverse_of: :prototype, dependent: :destroy
+  has_many :likes,                                   dependent: :destroy
+  has_many :comments,                                dependent: :destroy
   accepts_nested_attributes_for :captured_images
-  has_many :likes
-  has_many :comments
 
   acts_as_taggable
 
