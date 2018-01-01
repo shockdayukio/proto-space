@@ -1,6 +1,6 @@
 module ControllerMacros
-  def login_user
+  def login_user(user)
     @request.env["devise.mapping"] = Devise.mappings[:user]
-    sign_in create(:user)
+    sign_in user
   end
 end
