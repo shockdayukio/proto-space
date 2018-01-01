@@ -25,7 +25,7 @@ RSpec.configure do |config|
 
 
   # To test controllers with the devise
-  config.include Devise::TestHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :controller
   # use Devise::TestHelpers on the form of an instance method
   config.include ControllerMacros, type: :controller
   # use Devise::TestHelpers on the form of an class method
