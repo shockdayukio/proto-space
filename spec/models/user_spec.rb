@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'User' do
+describe User do
   let(:user){ create(:user)}
 
   describe 'validation' do
