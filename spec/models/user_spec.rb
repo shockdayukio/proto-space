@@ -13,7 +13,7 @@ describe User do
 
     context 'when a user lacks of one valid attributes' do
 
-      describe 'email' do
+      context 'email' do
         it "is invalid with no content" do
           user.email = ""
           user.valid?
@@ -26,13 +26,13 @@ describe User do
         end
       end
 
-      describe "password" do
+      context "password" do
         it "is invalid with nil" do
           user.password = nil
           user.valid?
           expect(user.errors[:password]).to include("can't be blank")
         end
-        describe 'when checking the length of the password' do
+        context 'when checking the length of the password' do
           it "is valid if an user's password is within 6 to 128 characters" do
             user.password = Faker::Internet.password(6, 128, true, true)
             user.valid?
@@ -53,7 +53,7 @@ describe User do
         end
       end
 
-      describe 'name' do
+      context 'name' do
         it "is invalid with no content" do
           user.name = ""
           user.valid?
@@ -66,7 +66,7 @@ describe User do
         end
       end
 
-      describe 'profile' do
+      context 'profile' do
         it "is invalid with no content" do
           user.profile = ""
           user.valid?
@@ -79,7 +79,7 @@ describe User do
         end
       end
 
-      describe "work" do
+      context "work" do
         it "is invalid with no content" do
           user.works = ""
           user.valid?
@@ -92,7 +92,7 @@ describe User do
         end
       end
 
-      describe "avatar" do
+      context "avatar" do
         it "invalid with no content" do
           user.avatar = ""
           user.valid?
@@ -105,7 +105,7 @@ describe User do
         end
       end
 
-      describe "occupation" do
+      context "occupation" do
         it "is invalid with no content" do
           user.occupation = ""
           user.valid?
@@ -120,9 +120,7 @@ describe User do
     end
 
     context 'when a user contains one of attributes that has already been saved' do
-      before :each do
-        create(:user)
-      end
+      let(:user){create(:user)}
 
       it "is invalid with a email that has already been saved" do
         second_user = build(:user, email: user.email)
