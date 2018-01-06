@@ -4,7 +4,6 @@ include ActionDispatch::TestProcess
 describe UsersController do
   let(:password){Faker::Internet.password(8, 16, true, true)}
   let(:user){ create(:user, password: password) }
-  let(:additional_prototype_num){ 3 }
   let(:prototypes){user.prototypes}
   let(:user_name){Faker::HarryPotter.character}
   let(:params){{ id: user.id, user: attributes_for(:user, name: user_name, password: password )}}
@@ -29,7 +28,7 @@ describe UsersController do
       end
 
       it "assigns the number of the user's prototypes to @prototypes_count" do
-        expect(assigns(:prototypes_count)).to eq additional_prototype_num
+        expect(assigns(:prototypes_count)).to eq prototypes.length
       end
     end
 
