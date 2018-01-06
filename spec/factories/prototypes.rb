@@ -66,7 +66,4 @@ FactoryBot.define do
       end
     end
   end
-
-  factory :new_prototype, class: Prototype do
-  end
 end
