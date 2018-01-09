@@ -53,6 +53,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
 
   gem 'acts-as-taggable-on', '~> 4.0'
+
 end
 
 group :development do
@@ -65,6 +66,14 @@ group :development do
   gem 'erb2haml'
   gem 'pry-rails'
   gem 'bullet'
+end
+
+group :test do
+  gem 'rspec-rails', '~> 3.6'
+
+  gem 'factory_bot_rails'
+
+  gem 'faker'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
