@@ -120,16 +120,16 @@ describe User do
     end
 
     context 'when a user contains one of attributes that has already been saved' do
-      let(:user){create(:user)}
+      let(:first_user){create(:user)}
 
       it "is invalid with a email that has already been saved" do
-        second_user = build(:user, email: user.email)
+        second_user = build(:user, email: first_user.email)
         second_user.valid?
         expect(second_user.errors[:email]).to include("has already been taken")
       end
 
       it "is invalid with a name that has already been saved" do
-        second_user = build(:user, name: user.name)
+        second_user = build(:user, name: first_user.name)
         second_user.valid?
         expect(second_user.errors[:name]).to include("has already been taken")
       end
