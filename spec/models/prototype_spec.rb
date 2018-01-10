@@ -12,22 +12,47 @@ describe Prototype do
     end
 
     context 'without necessary attributes' do
-      it 'is invalid without a name' do
-        prototype.name = nil
-        prototype.valid?
-        expect(prototype.errors[:name]).to include('can\'t be blank')
+      context 'name' do
+        it 'is invalid when a name is nil' do
+          prototype.name = nil
+          prototype.valid?
+          expect(prototype.errors[:name]).to include('can\'t be blank')
+        end
+
+        it 'is invalid when a name has no content' do
+          prototype.name = ""
+          prototype.valid?
+          expect(prototype.errors[:name]).to include('can\'t be blank')
+        end
       end
 
-      it 'is invalid without a catch_copy' do
-        prototype.catch_copy = nil
-        prototype.valid?
-        expect(prototype.errors[:catch_copy]).to include('can\'t be blank')
+
+      context 'catch_copy' do
+        it 'is invalid when a catch_copy is nil' do
+          prototype.catch_copy = nil
+          prototype.valid?
+          expect(prototype.errors[:catch_copy]).to include('can\'t be blank')
+        end
+
+        it 'is invalid when a catch_copy has no content' do
+          prototype.catch_copy = ""
+          prototype.valid?
+          expect(prototype.errors[:catch_copy]).to include('can\'t be blank')
+        end
       end
 
-      it 'is invalid without a concept' do
-        prototype.concept = nil
-        prototype.valid?
-        expect(prototype.errors[:concept]).to include('can\'t be blank')
+      context 'concept' do
+        it 'is invalid when a concept is nill' do
+          prototype.concept = nil
+          prototype.valid?
+          expect(prototype.errors[:concept]).to include('can\'t be blank')
+        end
+
+        it 'is invalid when a concept has no content' do
+          prototype.concept = ""
+          prototype.valid?
+          expect(prototype.errors[:concept]).to include('can\'t be blank')
+        end
       end
     end
 
