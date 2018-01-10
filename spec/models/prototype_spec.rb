@@ -2,53 +2,6 @@ require 'rails_helper'
 include ActionDispatch::TestProcess
 
 describe Prototype do
-  describe 'association' do
-    context 'with a user' do
-      let(:user){ create(:user) }
-      let!(:prototype){ create(:prototype) }
-      it 'is associated with an user' do
-        prototype.user = user
-        expect(prototype.user).to eq user
-      end
-    end
-
-    context 'with main image' do
-      let(:additional_main_image_num) { Prototype::NUMBER_OF_MAIN_IMAGE_IN_PROTOTYPE }
-      let!(:prototype) { create(:prototype, :with_main_image, default_main_image_num: additional_main_image_num) }
-      it 'deleted the main images when a prototype gets deleted' do
-        total_main_image_num = additional_main_image_num * 2
-        expect{prototype.destroy}.to change{ CapturedImage.count }.by(-1 * additional_main_image_num)
-      end
-    end
-
-    context 'with sub images' do
-      let(:additional_sub_images_num) { Prototype::MAXIMUM_NUMBER_OF_SUB_IMAGES_IN_PROTOTYPE }
-      let!(:prototype) { create(:prototype, :with_sub_images, default_sub_images_num: additional_sub_images_num) }
-      it 'deleted the sub images when a prototype gets deleted' do
-        total_sub_images_num = additional_sub_images_num * 2
-        expect{ prototype.destroy }.to change{ CapturedImage.count }.by(-1 * total_sub_images_num)
-      end
-    end
-
-    context 'with likes' do
-      let(:additional_likes_num) { 5 }
-      let!(:prototype) { create(:prototype, :with_likes, default_likes_num: additional_likes_num) }
-      it 'deleted the likes when a prototype gets deleted' do
-        total_likes_num = additional_likes_num * 2
-        expect{ prototype.destroy }.to change{ Like.count }.by(-1 * total_likes_num)
-      end
-    end
-
-    context 'with comments' do
-      let(:additional_comments_num) { 5 }
-      let!(:prototype) { create(:prototype, :with_comments, default_comments_num: additional_comments_num) }
-      it 'deleted the comments when a prototype gets deleted' do
-        total_comments_num = additional_comments_num * 2
-        expect{prototype.destroy}.to change{ Comment.count }.by(-1 * total_comments_num)
-      end
-    end
-  end
-
   describe 'validation' do
     let(:prototype){ build(:prototype) }
 
