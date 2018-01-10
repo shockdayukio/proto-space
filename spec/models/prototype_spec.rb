@@ -82,9 +82,9 @@ describe Prototype do
       end
 
       context 'no_more_than_six_sub_images' do
+        let(:prototype) { build(:prototype, :with_sub_images, default_sub_images_num: additional_sub_images_num) }
         context 'when a prototype contains no more than six sub images' do
           let(:additional_sub_images_num) { Prototype::MAXIMUM_NUMBER_OF_SUB_IMAGES_IN_PROTOTYPE }
-          let!(:prototype) { build(:prototype, :with_sub_images, default_sub_images_num: additional_sub_images_num) }
           it "is valid" do
             prototype.valid?
             expect(prototype).to be_valid
@@ -93,7 +93,6 @@ describe Prototype do
 
         context 'when a prototype contains more than six sub images' do
           let(:additional_sub_images_num) { Prototype::MAXIMUM_NUMBER_OF_SUB_IMAGES_IN_PROTOTYPE * 2 }
-          let!(:prototype) { build(:prototype, :with_sub_images, default_sub_images_num: additional_sub_images_num) }
           it "is invalid" do
             prototype.valid?
             expect(prototype.errors[:sub_images]).to include("cannot be contained more than #{Prototype::MAXIMUM_NUMBER_OF_SUB_IMAGES_IN_PROTOTYPE}")
