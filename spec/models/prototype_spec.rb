@@ -56,7 +56,7 @@ describe Prototype do
       end
     end
 
-    context 'custom methods' do
+    context 'custom validations' do
       context 'no_more_than_three_tags method' do
         context "when a prototype contains no more than three tags" do
           let(:number_of_tags) { Prototype::NUMBER_OF_TAGS_IN_A_PROTOTYPE }
