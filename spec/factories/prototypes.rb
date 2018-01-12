@@ -18,10 +18,6 @@ FactoryBot.define do
       after(:build) do |prototype, evaluator|
         prototype.captured_images << build_list(:main_image, evaluator.default_main_image_num)
       end
-
-      after(:create) do |prototype, evaluator|
-        prototype.captured_images << create_list(:main_image, evaluator.default_main_image_num)
-      end
     end
 
     trait :with_sub_images do
@@ -31,10 +27,6 @@ FactoryBot.define do
 
       after(:build) do |prototype, evaluator|
         prototype.captured_images << build_list(:sub_images, evaluator.default_sub_images_num)
-      end
-
-      after(:create) do |prototype, evaluator|
-        prototype.captured_images << create_list(:sub_images, evaluator.default_sub_images_num)
       end
     end
 
@@ -46,10 +38,6 @@ FactoryBot.define do
       after(:build) do |prototype, evaluator|
         prototype.comments << build_list(:comment, evaluator.default_comments_num)
       end
-
-      after(:create) do |prototype, evaluator|
-        prototype.comments << build_list(:comment, evaluator.default_comments_num)
-      end
     end
 
     trait :with_likes do
@@ -59,10 +47,6 @@ FactoryBot.define do
 
       after(:build) do |prototype, evaluator|
         prototype.likes << build_list(:like, evaluator.default_likes_num)
-      end
-
-      after(:create) do |prototype, evaluator|
-        prototype.likes << create_list(:like, evaluator.default_likes_num)
       end
     end
   end
