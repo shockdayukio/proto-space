@@ -102,7 +102,7 @@ describe Prototype do
 
       context 'other instance methods' do
         let(:saved_prototype) { create(:prototype) }
-        let(:saved_user) { saved_prototype.user = create(:user)}
+        let(:first_user) { saved_prototype.user = create(:user)}
         let(:second_user) { create(:user) }
 
         context 'main_image' do
@@ -130,7 +130,7 @@ describe Prototype do
         context 'created_by?' do
           context "with an argument which is the prototype's user" do
             it "returned true" do
-              expect(saved_prototype.created_by?(saved_user)).to be_truthy
+              expect(saved_prototype.created_by?(first_user)).to be_truthy
             end
           end
 
