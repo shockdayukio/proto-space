@@ -169,7 +169,8 @@ describe Prototype do
 
       context 'comment_num' do
         it "returns the number of prototype's comments" do
-          expect(saved_prototype.comment_num).to be_kind_of(Integer)
+          num_of_comments = saved_prototype.comments.size
+          expect(saved_prototype.comment_num).to eq num_of_comments
         end
       end
 
