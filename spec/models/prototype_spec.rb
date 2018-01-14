@@ -144,24 +144,20 @@ describe Prototype do
 
       context 'liked_by? method' do
         context "with argument which is nil" do
-          it "returns false" do
+          it "returns false when the argument is nil" do
             nil_obj = nil
             expect(saved_prototype.liked_by?(nil_obj)).to be_falsey
           end
         end
 
         context "with an argument which is an user instance" do
-          context "the user doesn't like the prototype" do
-            it "returns false" do
-              expect(saved_prototype.liked_by?(second_user)).to be_falsey
-            end
+          it "return false when the like has not been created by the given user" do
+            expect(saved_prototype.liked_by?(second_user)).to be_falsey
           end
 
-          context "the user likes the prototype" do
-            it "returns true" do
-              like = create(:like, prototype_id: saved_prototype.id, user_id: second_user.id)
-              expect(saved_prototype.liked_by?(second_user)).to be_truthy
-            end
+          it "returns true when the like has been created by the given user" do
+            like = create(:like, prototype_id: saved_prototype.id, user_id: second_user.id)
+            expect(saved_prototype.liked_by?(second_user)).to be_truthy
           end
         end
       end
