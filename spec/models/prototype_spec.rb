@@ -102,8 +102,8 @@ describe Prototype do
     end
 
     context 'other instance methods' do
-      let(:saved_prototype) { create(:prototype) }
-      let(:first_user) { saved_prototype.user = create(:user)}
+      let(:prototype_with_no_image) { create(:prototype) }
+      let(:first_user) { prototype_with_no_image.user = create(:user)}
       let(:second_user) { create(:user) }
 
       context 'main_image method' do
@@ -116,7 +116,7 @@ describe Prototype do
 
         context 'with no main image' do
           it "returns no-image.png" do
-            expect(saved_prototype.main_image).to eq "no-image.png"
+            expect(prototype_with_no_image.main_image).to eq "no-image.png"
           end
         end
       end
@@ -131,13 +131,13 @@ describe Prototype do
       context 'created_by? method' do
         context "with an argument which is the prototype's user" do
           it "returned true" do
-            expect(saved_prototype.created_by?(first_user)).to be_truthy
+            expect(prototype_with_no_image.created_by?(first_user)).to be_truthy
           end
         end
 
         context "with an argument which is an other user" do
           it "returned false" do
-            expect(saved_prototype.created_by?(second_user)).to be_falsey
+            expect(prototype_with_no_image.created_by?(second_user)).to be_falsey
           end
         end
       end
@@ -146,26 +146,26 @@ describe Prototype do
         context "with argument which is nil" do
           it "returns false when the argument is nil" do
             nil_obj = nil
-            expect(saved_prototype.liked_by?(nil_obj)).to be_falsey
+            expect(prototype_with_no_image.liked_by?(nil_obj)).to be_falsey
           end
         end
 
         context "with an argument which is an user instance" do
           it "return false when the like has not been created by the given user" do
-            expect(saved_prototype.liked_by?(second_user)).to be_falsey
+            expect(prototype_with_no_image.liked_by?(second_user)).to be_falsey
           end
 
           it "returns true when the like has been created by the given user" do
-            like = create(:like, prototype_id: saved_prototype.id, user_id: second_user.id)
-            expect(saved_prototype.liked_by?(second_user)).to be_truthy
+            like = create(:like, prototype_id: prototype_with_no_image.id, user_id: second_user.id)
+            expect(prototype_with_no_image.liked_by?(second_user)).to be_truthy
           end
         end
       end
 
       context 'comment_num method' do
         it "returns the number of prototype's comments" do
-          num_of_comments = saved_prototype.comments.size
-          expect(saved_prototype.comment_num).to eq num_of_comments
+          num_of_comments = prototype_with_no_image.comments.size
+          expect(prototype_with_no_image.comment_num).to eq num_of_comments
         end
       end
 
