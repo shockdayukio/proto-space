@@ -109,8 +109,9 @@ describe Prototype do
       context 'main_image method' do
         context 'with a main image' do
           let(:prototype_with_main_image){ create(:prototype, :with_main_image) }
+
           it "returns the main image" do
-            expect(prototype_with_main_image.main_image).to eq prototype_with_main_image.captured_images.main.first.image
+            expect(prototype_with_main_image.main_image.file.filename).to eq prototype_with_main_image.captured_images.main.first.image.file.filename
           end
         end
 
