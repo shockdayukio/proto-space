@@ -59,7 +59,7 @@ describe Prototype do
     context 'custom validations' do
       context 'no_more_than_three_tags method' do
         let(:number_of_tags) { Prototype::NUMBER_OF_TAGS_IN_A_PROTOTYPE }
-        context "when a prototype contains no more than three tags" do
+        context "when a prototype contains three or less tags" do
           it "is valid" do
             number_of_tags.times do
               prototype.tag_list.add("#{Faker::Beer.name}")
@@ -69,7 +69,7 @@ describe Prototype do
           end
         end
 
-        context "when a prototype contains more than three tags" do
+        context "when a prototype contains more than four tags" do
           it "is invalid" do
             invalid_number_of_tags = number_of_tags * 2
             invalid_number_of_tags.times do
