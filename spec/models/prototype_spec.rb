@@ -142,14 +142,14 @@ describe Prototype do
         end
 
         context 'liked_by?' do
-          context "with no argument" do
-            no_user = nil
+          context "with argument which is nil" do
             it "returns false" do
-              expect(saved_prototype.liked_by?(no_user)).to be_falsey
+              nil_obj = nil
+              expect(saved_prototype.liked_by?(nil_obj)).to be_falsey
             end
           end
 
-          context "with an argument" do
+          context "with an argument which is an user instance" do
             context "the user don't like the prototype" do
               it "returns false" do
                 expect(saved_prototype.liked_by?(second_user)).to be_falsey
