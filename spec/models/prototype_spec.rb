@@ -171,9 +171,12 @@ describe Prototype do
 
       context 'create_at method' do
         it "returns the date that the prototype was created in the simple format" do
+          Year_digit = 4
+          Min_day_digit = 1
+          Max_day_digit = 2
           time = Time.new(2018, 1, 1, 00, 00)
           prototype_created_now = create(:prototype, created_at: time)
-          expect(prototype_created_now.created_at).not_to eq time
+          expect(prototype_created_now.created_at).to match(/\d{#{Year_digit}} [A-Z][a-z][a-z] \d{#{Min_day_digit},#{Max_day_digit}}/)
         end
       end
     end
