@@ -160,7 +160,6 @@ describe Prototype do
           context "the user likes the prototype" do
             it "returns true" do
               like = create(:like, prototype_id: saved_prototype.id, user_id: second_user.id)
-              saved_prototype.likes << like
               expect(saved_prototype.liked_by?(second_user)).to be_truthy
             end
           end
