@@ -99,85 +99,85 @@ describe Prototype do
           end
         end
       end
+    end
 
-      context 'other instance methods' do
-        let(:saved_prototype) { create(:prototype) }
-        let(:first_user) { saved_prototype.user = create(:user)}
-        let(:second_user) { create(:user) }
+    context 'other instance methods' do
+      let(:saved_prototype) { create(:prototype) }
+      let(:first_user) { saved_prototype.user = create(:user)}
+      let(:second_user) { create(:user) }
 
-        context 'main_image' do
-          context 'with a main image' do
-            let(:prototype_with_main_image){ create(:prototype, :with_main_image) }
-            it "returns the main image" do
-              expect(prototype_with_main_image.main_image).to eq prototype_with_main_image.captured_images.main.first.image
-            end
-          end
-
-          context 'with no main image' do
-            it "returns no-image.png" do
-              expect(saved_prototype.main_image).to eq "no-image.png"
-            end
+      context 'main_image' do
+        context 'with a main image' do
+          let(:prototype_with_main_image){ create(:prototype, :with_main_image) }
+          it "returns the main image" do
+            expect(prototype_with_main_image.main_image).to eq prototype_with_main_image.captured_images.main.first.image
           end
         end
 
-        context 'sub_images' do
-          it "returns sub image instances" do
-            prototype_with_sub_images = create(:prototype, :with_sub_images)
-            expect(prototype_with_sub_images.sub_images).to eq prototype_with_sub_images.captured_images.sub
+        context 'with no main image' do
+          it "returns no-image.png" do
+            expect(saved_prototype.main_image).to eq "no-image.png"
+          end
+        end
+      end
+
+      context 'sub_images' do
+        it "returns sub image instances" do
+          prototype_with_sub_images = create(:prototype, :with_sub_images)
+          expect(prototype_with_sub_images.sub_images).to eq prototype_with_sub_images.captured_images.sub
+        end
+      end
+
+      context 'created_by?' do
+        context "with an argument which is the prototype's user" do
+          it "returned true" do
+            expect(saved_prototype.created_by?(first_user)).to be_truthy
           end
         end
 
-        context 'created_by?' do
-          context "with an argument which is the prototype's user" do
-            it "returned true" do
-              expect(saved_prototype.created_by?(first_user)).to be_truthy
-            end
+        context "with an argument which is an other user" do
+          it "returned false" do
+            expect(saved_prototype.created_by?(second_user)).to be_falsey
           end
+        end
+      end
 
-          context "with an argument which is an other user" do
-            it "returned false" do
-              expect(saved_prototype.created_by?(second_user)).to be_falsey
-            end
+      context 'liked_by?' do
+        context "with argument which is nil" do
+          it "returns false" do
+            nil_obj = nil
+            expect(saved_prototype.liked_by?(nil_obj)).to be_falsey
           end
         end
 
-        context 'liked_by?' do
-          context "with argument which is nil" do
+        context "with an argument which is an user instance" do
+          context "the user doesn't like the prototype" do
             it "returns false" do
-              nil_obj = nil
-              expect(saved_prototype.liked_by?(nil_obj)).to be_falsey
+              expect(saved_prototype.liked_by?(second_user)).to be_falsey
             end
           end
 
-          context "with an argument which is an user instance" do
-            context "the user doesn't like the prototype" do
-              it "returns false" do
-                expect(saved_prototype.liked_by?(second_user)).to be_falsey
-              end
-            end
-
-            context "the user likes the prototype" do
-              it "returns true" do
-                like = create(:like, prototype_id: saved_prototype.id, user_id: second_user.id)
-                saved_prototype.likes << like
-                expect(saved_prototype.liked_by?(second_user)).to be_truthy
-              end
+          context "the user likes the prototype" do
+            it "returns true" do
+              like = create(:like, prototype_id: saved_prototype.id, user_id: second_user.id)
+              saved_prototype.likes << like
+              expect(saved_prototype.liked_by?(second_user)).to be_truthy
             end
           end
         end
+      end
 
-        context 'comment_num' do
-          it "returns the number of prototype's comments" do
-            expect(saved_prototype.comment_num).to be_kind_of(Integer)
-          end
+      context 'comment_num' do
+        it "returns the number of prototype's comments" do
+          expect(saved_prototype.comment_num).to be_kind_of(Integer)
         end
+      end
 
-        context 'create_at' do
-          it "returns the date that the prototype was created in the simple format" do
-            time = Time.new(2018, 1, 1, 00, 00)
-            prototype_created_now = create(:prototype, created_at: time)
-            expect(prototype_created_now.created_at).not_to eq time
-          end
+      context 'create_at' do
+        it "returns the date that the prototype was created in the simple format" do
+          time = Time.new(2018, 1, 1, 00, 00)
+          prototype_created_now = create(:prototype, created_at: time)
+          expect(prototype_created_now.created_at).not_to eq time
         end
       end
     end
