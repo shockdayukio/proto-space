@@ -150,7 +150,7 @@ describe Prototype do
           end
 
           context "with an argument which is an user instance" do
-            context "the user don't like the prototype" do
+            context "the user doesn't like the prototype" do
               it "returns false" do
                 expect(saved_prototype.liked_by?(second_user)).to be_falsey
               end
