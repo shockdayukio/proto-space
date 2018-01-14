@@ -121,8 +121,8 @@ describe Prototype do
         end
 
         context 'sub_images' do
-          let(:prototype_with_sub_images){ create(:prototype, :with_sub_images) }
           it "returns sub image instances" do
+            prototype_with_sub_images = create(:prototype, :with_sub_images)
             expect(prototype_with_sub_images.sub_images).to eq prototype_with_sub_images.captured_images.sub
           end
         end
@@ -143,7 +143,7 @@ describe Prototype do
 
         context 'liked_by?' do
           context "with no argument" do
-            let(:no_user){ nil }
+            no_user = nil
             it "returns false" do
               expect(saved_prototype.liked_by?(no_user)).to be_falsey
             end
@@ -157,8 +157,8 @@ describe Prototype do
             end
 
             context "the user likes the prototype" do
-              let(:like){ create(:like, prototype_id: saved_prototype.id, user_id: second_user.id) }
               it "returns true" do
+                like = create(:like, prototype_id: saved_prototype.id, user_id: second_user.id)
                 saved_prototype.likes << like
                 expect(saved_prototype.liked_by?(second_user)).to be_truthy
               end
@@ -173,10 +173,9 @@ describe Prototype do
         end
 
         context 'create_at' do
-          let(:time){ Time.new(2018, 1, 1, 00, 00) }
-          let(:prototype_created_now){ create(:prototype, created_at: time) }
-
           it "returns the date that the prototype was created in the simple format" do
+            time = Time.new(2018, 1, 1, 00, 00)
+            prototype_created_now = create(:prototype, created_at: time)
             expect(prototype_created_now.created_at).not_to eq time
           end
         end
