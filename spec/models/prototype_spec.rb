@@ -81,7 +81,7 @@ describe Prototype do
         end
       end
 
-      context 'no_more_than_six_sub_images' do
+      context 'no_more_than_six_sub_images method' do
         let(:prototype) { build(:prototype, :with_sub_images, default_sub_images_num: additional_sub_images_num) }
         context 'when a prototype contains no more than six sub images' do
           let(:additional_sub_images_num) { Prototype::MAXIMUM_NUMBER_OF_SUB_IMAGES_IN_PROTOTYPE }
@@ -106,7 +106,7 @@ describe Prototype do
       let(:first_user) { saved_prototype.user = create(:user)}
       let(:second_user) { create(:user) }
 
-      context 'main_image' do
+      context 'main_image method' do
         context 'with a main image' do
           let(:prototype_with_main_image){ create(:prototype, :with_main_image) }
           it "returns the main image" do
@@ -121,14 +121,14 @@ describe Prototype do
         end
       end
 
-      context 'sub_images' do
+      context 'sub_images method' do
         it "returns sub image instances" do
           prototype_with_sub_images = create(:prototype, :with_sub_images)
           expect(prototype_with_sub_images.sub_images).to eq prototype_with_sub_images.captured_images.sub
         end
       end
 
-      context 'created_by?' do
+      context 'created_by? method' do
         context "with an argument which is the prototype's user" do
           it "returned true" do
             expect(saved_prototype.created_by?(first_user)).to be_truthy
@@ -142,7 +142,7 @@ describe Prototype do
         end
       end
 
-      context 'liked_by?' do
+      context 'liked_by? method' do
         context "with argument which is nil" do
           it "returns false" do
             nil_obj = nil
@@ -166,14 +166,14 @@ describe Prototype do
         end
       end
 
-      context 'comment_num' do
+      context 'comment_num method' do
         it "returns the number of prototype's comments" do
           num_of_comments = saved_prototype.comments.size
           expect(saved_prototype.comment_num).to eq num_of_comments
         end
       end
 
-      context 'create_at' do
+      context 'create_at method' do
         it "returns the date that the prototype was created in the simple format" do
           time = Time.new(2018, 1, 1, 00, 00)
           prototype_created_now = create(:prototype, created_at: time)
