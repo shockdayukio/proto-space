@@ -54,6 +54,7 @@ group :development, :test do
 
   gem 'acts-as-taggable-on', '~> 4.0'
 
+  gem 'pry-rails'
 end
 
 group :development do
@@ -64,7 +65,6 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'erb2haml'
-  gem 'pry-rails'
   gem 'bullet'
 end
 
