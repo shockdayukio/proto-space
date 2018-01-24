@@ -130,43 +130,50 @@ describe Prototype do
       end
 
       context 'created_by? method' do
+        let(:prototype) { create(:prototype) }
+        let(:user) { prototype.user = create(:user) }
+
         context "with an argument which is the prototype's user" do
           it "returned true" do
-            expect(prototype_with_no_image.created_by?(first_user)).to be_truthy
+            expect(prototype.created_by?(user)).to be_truthy
           end
         end
 
         context "with an argument which is an other user" do
           it "returned false" do
-            expect(prototype_with_no_image.created_by?(second_user)).to be_falsey
+            expect(prototype.created_by?(second_user)).to be_falsey
           end
         end
       end
 
       context 'liked_by? method' do
+        let(:prototype) { create(:prototype) }
+        let(:user) { prototype.user = create(:user) }
+
         context "with argument which is nil" do
           it "returns false when the argument is nil" do
             nil_obj = nil
-            expect(prototype_with_no_image.liked_by?(nil_obj)).to be_falsey
+            expect(prototype.liked_by?(nil_obj)).to be_falsey
           end
         end
 
         context "with an argument which is an user instance" do
           it "return false when the like has not been created by the given user" do
-            expect(prototype_with_no_image.liked_by?(second_user)).to be_falsey
+            expect(prototype.liked_by?(second_user)).to be_falsey
           end
 
           it "returns true when the like has been created by the given user" do
-            like = create(:like, prototype_id: prototype_with_no_image.id, user_id: second_user.id)
-            expect(prototype_with_no_image.liked_by?(second_user)).to be_truthy
+            like = create(:like, prototype_id: prototype.id, user_id: second_user.id)
+            expect(prototype.liked_by?(second_user)).to be_truthy
           end
         end
       end
 
       context 'comment_num method' do
+        let(:prototype) { create(:prototype) }
         it "returns the number of prototype's comments" do
-          num_of_comments = prototype_with_no_image.comments.size
-          expect(prototype_with_no_image.comment_num).to eq num_of_comments
+          num_of_comments = prototype.comments.size
+          expect(prototype.comment_num).to eq num_of_comments
         end
       end
 
