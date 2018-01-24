@@ -1,6 +1,10 @@
 require 'rails_helper'
 include ActionDispatch::TestProcess
 
+YEAR_DIGIT = 4
+MIN_DAY_DIGIT = 1
+MAX_DAY_DIGIT = 2
+
 describe Prototype do
   describe 'validation' do
     let(:prototype){ build(:prototype) }
@@ -179,9 +183,6 @@ describe Prototype do
 
       context 'create_at method' do
         it "returns the date that the prototype was created in the simple format" do
-          YEAR_DIGIT = 4
-          MIN_DAY_DIGIT = 1
-          MAX_DAY_DIGIT = 2
           time = Time.new(2018, 1, 1, 00, 00)
           prototype_created_now = create(:prototype, created_at: time)
           expect(prototype_created_now.created_at).to match(/\d{#{YEAR_DIGIT}} [A-Z][a-z][a-z] \d{#{MIN_DAY_DIGIT},#{MAX_DAY_DIGIT}}/)
