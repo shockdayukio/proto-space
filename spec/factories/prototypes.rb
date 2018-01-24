@@ -1,6 +1,8 @@
 FactoryBot.define do
   DEFAULT_MINIMUM_LIKES_COUNT = 1
   DEFAULT_MAXIMUM_LIKES_COUNT = 300
+  DEFAULT_COMMENTS_NUM = 10
+  DEFAULT_LIKES_NUM = 10
 
   factory :prototype, class: Prototype do
     name            { Faker::Beer.name }
@@ -31,20 +33,12 @@ FactoryBot.define do
     end
 
     trait :with_comments do
-      transient do
-        default_comments_num 10
-      end
-
       after(:build) do |prototype, evaluator|
         prototype.comments << build_list(:comment, evaluator.default_comments_num)
       end
     end
 
     trait :with_likes do
-      transient do
-        default_likes_num 10
-      end
-
       after(:build) do |prototype, evaluator|
         prototype.likes << build_list(:like, evaluator.default_likes_num)
       end
