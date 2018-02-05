@@ -1,4 +1,5 @@
 class Prototype < ApplicationRecord
+  NUMBER_OF_MAIN_IMAGE_IN_PROTOTYPE = 1
   NUMBER_OF_DISPLAYED_PROTOTYPES = 8
   NUMBER_OF_SUB_IMAGES_IN_NEW_PROTOTYPE_FORM = 2
   MAXIMUM_NUMBER_OF_SUB_IMAGES_IN_PROTOTYPE = 6
@@ -7,8 +8,8 @@ class Prototype < ApplicationRecord
   belongs_to :user
   has_many :captured_images, inverse_of: :prototype, dependent: :destroy
   accepts_nested_attributes_for :captured_images
-  has_many :likes
-  has_many :comments
+  has_many :likes,                                   dependent: :destroy
+  has_many :comments ,                               dependent: :destroy
 
   acts_as_taggable
 
