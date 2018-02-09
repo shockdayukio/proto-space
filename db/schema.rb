@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20171215121124) do
 
-  create_table "captured_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "captured_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "image",        default: "", null: false
     t.integer  "status",                    null: false
     t.integer  "prototype_id"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20171215121124) do
     t.index ["prototype_id"], name: "index_captured_images_on_prototype_id", using: :btree
   end
 
-  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "text",         limit: 65535, null: false
     t.integer  "prototype_id"
     t.integer  "user_id"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20171215121124) do
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
-  create_table "likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "prototype_id"
     t.integer  "user_id"
     t.datetime "created_at",   null: false
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20171215121124) do
     t.index ["user_id"], name: "index_likes_on_user_id", using: :btree
   end
 
-  create_table "prototypes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "prototypes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",                     default: "", null: false
     t.string   "catch_copy",               default: "", null: false
     t.text     "concept",    limit: 65535,              null: false
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20171215121124) do
     t.index ["user_id"], name: "index_prototypes_on_user_id", using: :btree
   end
 
-  create_table "taggings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "taggings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "tag_id"
     t.string   "taggable_type"
     t.integer  "taggable_id"
@@ -71,13 +71,13 @@ ActiveRecord::Schema.define(version: 20171215121124) do
     t.index ["tagger_id"], name: "index_taggings_on_tagger_id", using: :btree
   end
 
-  create_table "tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string  "name",                       collation: "utf8_bin"
     t.integer "taggings_count", default: 0
     t.index ["name"], name: "index_tags_on_name", unique: true, using: :btree
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                                default: "",            null: false
     t.string   "encrypted_password",                   default: "",            null: false
     t.string   "name",                                 default: "",            null: false

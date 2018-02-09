@@ -33,8 +33,8 @@ FactoryBot.define do
     end
 
     trait :with_comments do
-      after(:build) do |prototype, evaluator|
-        prototype.comments << build_list(:comment, evaluator.default_comments_num)
+      after(:build) do |prototype|
+        prototype.comments << build_list(:comment, DEFAULT_COMMENTS_NUM)
       end
     end
 
